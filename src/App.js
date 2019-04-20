@@ -12,7 +12,6 @@ class App extends Component {
         <NavBar/>
          <Switch>
           <Route exact path= '/customers' component={CustomerListContainer}/>
-
           />
          </Switch>
         </React.Fragment>
