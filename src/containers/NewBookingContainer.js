@@ -12,6 +12,8 @@ class NewBookingContainer extends React.Component {
       tables: [],
       currentTable: null
     };
+    this.handleCustomerSelected = this.handleCustomerSelected.bind(this);
+    this.handleTableSelected = this.handleTableSelected.bind(this);
   }
   // componentDidMount(){
   //   const url = ''
