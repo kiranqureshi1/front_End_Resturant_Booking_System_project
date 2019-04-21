@@ -44,7 +44,8 @@ class NewBookingContainer extends React.Component {
       <NavBar/>
       <h2>Create a New Booking</h2>
       <Customer customers={this.state.customers}
-      currentCustomer={this.handleCustomerSelected}/>
+      currentCustomer={this.handleCustomerSelected}
+      customer={this.state.currentCustomer}/>
       <TableList tables={this.state.tables}
       currentTable={this.handleTableSelected}/>
       </div>
