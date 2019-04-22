@@ -56,7 +56,7 @@ class RestaurantViewContainer extends Component {
             </form>
           </div>
           <div className="grid">
-            <TableList tables={this.props.tables} handleNewBooking={this.handleNewBooking}/>
+            <TableList tables={this.props.tables} date={this.state.date} handleNewBooking={this.handleNewBooking}/>
             <BookingList bookings={this.props.bookings}/>
           </div>
       </React.Fragment>

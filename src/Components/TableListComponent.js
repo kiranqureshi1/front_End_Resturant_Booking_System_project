@@ -1,8 +1,11 @@
 import React from "react";
+import {Link} from 'react-router-dom'
+
 import "./css/TableListComponent.css";
 
 
 const TableList = (props) => {
+
 
   const tables = props.tables.map((table, index) => {
     if (table.taken) {
@@ -11,11 +14,12 @@ const TableList = (props) => {
       </div>
 
     } else {
-      return <div className="table" key={index} onClick={props.handleNewBooking}>
+      return <Link to={`/newbooking/${table.tableNumber}/${props.date}`}><div className="table" key={index}>
       {table.tableNumber}
-      </div>
+    </div></Link>
     }
     })
+
 
   return(
     <div className="table-list">

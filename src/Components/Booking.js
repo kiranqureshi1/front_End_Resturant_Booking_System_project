@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from 'react-router-dom'
 const Booking = (props) => {
+
   return (
           <Link to={`/editbooking/${props.booking.id}`}>
             <div>

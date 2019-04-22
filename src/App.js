@@ -97,16 +97,19 @@ class App extends Component {
               }}
 
               />
-              <Route exact path="/newbooking/:id" render = {(props) =>{
+            <Route exact path="/newbooking/:id/:date" render = {(props) =>{
                 const id = props.match.params.id;
+                const date = props.match.params.date
                 return <NewBookingContainer id = {id} customers = {this.state.customers}/>
                 }}
               />
+
             <Route exact path="/editbooking/:id" render = {(props) =>{
                 const id = props.match.params.id;
                 return <EditBookingComponent id = {id} />
                 }}
               />
+
             <Route exact path = "/customers" render = {(props) => {
 
                 return <CustomerListContainer customers = {this.state.customers}/>
