@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import RestaurantViewContainer from "./containers/RestaurantViewContainer";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import NewBookingContainer from "./containers/NewBookingContainer.js";
+import CustomerListContainer from "./containers/CustomerListContainer.js"
 import Request from "./helpers/requests.js";
 
 import './App.css';
@@ -35,6 +36,10 @@ class App extends Component {
                 return <NewBookingContainer id = {id} customers = {this.state.customers}/>
                 }}
               />
+            <Route exact path = "/customers" render = {(props) => {
+
+                return <CustomerListContainer customers = {this.state.customers}/>
+                }} />
           </Switch>
         </React.Fragment>
     </Router>
