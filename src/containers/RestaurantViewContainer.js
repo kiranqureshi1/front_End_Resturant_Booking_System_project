@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import {browserHistory} from 'react-router';
+
 import Request from "../helpers/requests.js";
 import "./css/RestaurantViewContainer.css";
 
@@ -10,7 +12,7 @@ class RestaurantViewContainer extends Component {
     super(props)
     this.state = {
       tables: [],
-      customers: [],
+      customers: this.props.customers,
       bookings: [],
       date: null,
       time: null
@@ -19,7 +21,7 @@ class RestaurantViewContainer extends Component {
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleTimeChange = this.handleTimeChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
+    this.handleNewBooking = this.handleNewBooking.bind(this);
   }
 
   componentWillMount() {
@@ -32,11 +34,21 @@ class RestaurantViewContainer extends Component {
     this.getTables();
   }
 
+
   getTables() {
     const request = new Request();
     request.get('restaurantTables/')
       .then(res => {
         this.setState({tables: res._embedded.restaurantTables})
+
+        const allTables = this.state.tables
+
+        for (const table of allTables) {
+          table.taken = false;
+        }
+
+        this.setState({tables: allTables})
+
       })
   }
 
@@ -89,6 +101,11 @@ class RestaurantViewContainer extends Component {
     }
   }
 
+  handleNewBooking(event) {
+    const tableToBook = event.target.textContent;
+    this.props.history.push(`/newbooking/${tableToBook}`)
+  }
+
   render() {
     return(
       <React.Fragment>
@@ -100,7 +117,7 @@ class RestaurantViewContainer extends Component {
             </form>
           </div>
           <div className="grid">
-            <TableList tables={this.state.tables}/>
+            <TableList tables={this.state.tables} handleNewBooking={this.handleNewBooking}/>
             <BookingList bookings={this.state.bookings}/>
           </div>
       </React.Fragment>
