@@ -1,0 +1,10 @@
+.top-section {
+  height: 100px;
+
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  border: 1px solid black;
+}
