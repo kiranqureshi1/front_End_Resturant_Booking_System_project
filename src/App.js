@@ -15,12 +15,11 @@ class App extends Component {
     this.state = {
       tables: [],
       customers: [],
-      bookings: []
+      bookings: [],
+      allBookings: []
     }
-
     this.getBookingsByDate = this.getBookingsByDate.bind(this)
     this.getBookingsByHour = this.getBookingsByHour.bind(this)
-
   }
 
   componentWillMount() {
@@ -31,6 +30,15 @@ class App extends Component {
       })
 
     this.getTables()
+    this.allBookings()
+  }
+
+  allBookings(){
+    const request = new Request();
+    request.get('bookings/')
+      .then(res => {
+        this.setState({allBookings: res._embedded.bookings})
+      })
   }
 
   getTables() {
@@ -43,8 +51,11 @@ class App extends Component {
           table.taken = false;
         }
         this.setState({tables: allTables})
+        console.log(this.state)
       })
   }
+
+
 
   getBookingsByDate(url) {
     const request = new Request();
@@ -74,6 +85,17 @@ class App extends Component {
       }
     }
     this.setState({tables: newTableState})
+  }
+
+  newBooking() {
+    const request = new Request();
+    request.patch('/bookings/', {
+       "date": 10,
+       "time": 10,
+        "customer_id": 2,
+        "restaurant_table_id": 1
+     })
+
   }
 
   componentDidMount() {
@@ -106,12 +128,11 @@ class App extends Component {
 
             <Route exact path="/editbooking/:id" render = {(props) =>{
                 const id = props.match.params.id;
-                return <EditBookingComponent id = {id} />
+                return <EditBookingComponent id = {id} allBookings={this.state.allBookings} newBooking={this.newBooking}/>
                 }}
               />
 
             <Route exact path = "/customers" render = {(props) => {
-
                 return <CustomerListContainer customers = {this.state.customers}/>
                 }} />
 
