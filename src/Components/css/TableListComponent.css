@@ -1,0 +1,9 @@
+.table-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 40px
+}
+
+.taken {
+  background-color: red;
+}
