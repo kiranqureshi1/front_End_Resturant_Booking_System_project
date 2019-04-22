@@ -9,6 +9,7 @@ const Booking = (props) => {
               Time: {props.booking.time} PM
             </div>
           </Link>
+
     )
 }
 

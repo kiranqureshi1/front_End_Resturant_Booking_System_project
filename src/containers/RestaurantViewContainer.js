@@ -11,9 +11,6 @@ class RestaurantViewContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      tables: this.props.tables,
-      customers: this.props.customers,
-      bookings: this.props.bookings,
       date: null,
       time: null
     }

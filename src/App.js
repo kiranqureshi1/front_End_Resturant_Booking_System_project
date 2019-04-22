@@ -111,6 +111,7 @@ class App extends Component {
 
                 return <CustomerListContainer customers = {this.state.customers}/>
                 }} />
+
           </Switch>
         </React.Fragment>
     </Router>
