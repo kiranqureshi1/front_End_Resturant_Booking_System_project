@@ -6,16 +6,15 @@ class NewBookingContainer extends Component {
   constructor (props)  {
     super(props)
 
-
+    this.customers = this.props.customers;
 
     this.handleNewBookingSubmit = this.handleNewBookingSubmit.bind(this);
     this.handleNewCustomer = this.handleNewCustomer.bind(this);
   }
-  // const tableNum = this.props.id;
-  // const date = this.props.date;
-  // const time = this.props.time;
-  // const customers = this.props.customers
 
+  componentDidMount() {
+    console.log('triggered')
+  }
 
   handleNewBookingSubmit(event) {
     event.preventDefault()
@@ -28,15 +27,17 @@ class NewBookingContainer extends Component {
       "date": this.props.date,
       "time": this.props.time
     })
+    this.props.getData()
   }
   handleNewCustomer(newCustomer){
     const request = new Request();
     request.post('/customers', {name: newCustomer})
+    this.props.getData()
   }
   render() {
 
-    const customerOptions = this.props.customers.map((customer, index) => {
-      return <option key="index" value={customer.id}>{customer.name}</option>
+    const customerOptions = this.customers.map((customer, index) => {
+      return <option key={index} value={customer.id}>{customer.name}</option>
     })
 
     return (

@@ -142,7 +142,11 @@ class App extends Component {
                 const id = props.match.params.id;
                 const date = props.match.params.date;
                 const time = props.match.params.time;
-                return <NewBookingContainer id = {id} date = {date} time={time} customers = {this.state.customers}/>
+                return <NewBookingContainer id = {id}
+                  date = {date}
+                  time={time}
+                  getData={this.getData}
+                  customers = {this.state.customers}/>
                 }}
               />
 
