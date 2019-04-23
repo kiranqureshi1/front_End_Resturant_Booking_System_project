@@ -37,7 +37,8 @@ class EditBookingComponent extends Component {
   handleUpdate(event) {
     event.preventDefault()
     const table = event.target.table.value
-    if (!this.verifyDuplicate()) {
+    this.setState({table: table})
+    if (!this.verifyDuplicate(table)) {
       console.log('try again')
     } else {
       this.props.editBooking({
@@ -49,11 +50,11 @@ class EditBookingComponent extends Component {
       })
     }
 }
-  verifyDuplicate() {
+  verifyDuplicate(table) {
     for (const existingBooking of this.props.allBookings) {
       if ((existingBooking.time == this.state.time) &&
         (existingBooking.date == this.state.date) &&
-        (existingBooking.restaurantTable.tableNumber == this.state.table)) {
+        (existingBooking.restaurantTable.tableNumber == table)) {
           return false
         }
     } return true
