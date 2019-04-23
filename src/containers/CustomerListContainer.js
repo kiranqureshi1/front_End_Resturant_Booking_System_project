@@ -1,4 +1,5 @@
 import React from "react";
+
 import CustomerComponent from '../Components/CustomerComponent'
 
 const CustomerList = (props) => {

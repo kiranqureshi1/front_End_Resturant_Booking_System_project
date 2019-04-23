@@ -1,12 +1,16 @@
 import React from "react";
 
 const NewBookingContainer = (props) =>  {
-  const tableNum = props.id
+  const tableNum = props.id;
+  // const date = props.date;
+  // const time = props.time;
   const customers = props.customers
 
   const customerOptions = customers.map((customer, index) => {
-    return <option key="index">{customer.name}</option>
+    return <option key="index" value={customer.id}>{customer.name}</option>
   })
+
+  props.getAllCustomers()
 
     return (
       <div>
@@ -17,6 +21,8 @@ const NewBookingContainer = (props) =>  {
             {customerOptions}
           </select>
           <p> Table: {tableNum}</p>
+          <p> Time: </p>
+          <p> Date: </p>
 
         </form>
       </div>
