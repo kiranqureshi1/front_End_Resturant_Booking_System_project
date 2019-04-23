@@ -19,6 +19,7 @@ const CustomerList = (props) => {
 
   return (
 		<ul className="component-list">
+    <h3>Customers</h3>
 	    {customers}
 	  </ul>
 

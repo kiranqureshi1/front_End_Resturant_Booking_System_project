@@ -13,7 +13,8 @@ const bookings = props.customer.bookings.map((booking, index) => {
 })
 return (
   <div>
-  {bookings} </div>
+  {bookings}
+  </div>
 )
 
 
