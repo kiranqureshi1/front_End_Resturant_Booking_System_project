@@ -14,7 +14,9 @@ class BookingList extends Component {
       return (
         <div>
         <Booking key={index} booking={booking}/>
-      
+        <Link to = {"/customerReceipt/" + booking.id} className="name">
+        ADD Receipt
+        </Link>
         </div>
       )
 
