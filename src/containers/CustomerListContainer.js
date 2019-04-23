@@ -11,6 +11,7 @@ const CustomerList = (props) => {
     return (
       <li key={customer.id} className="component-item">
         <div className = "component">
+
       <CustomerComponent  customer={customer} />
     </div>
     </li>

@@ -11,9 +11,13 @@ const bookings = props.customer.bookings.map((booking, index) => {
     Receipt: {booking.receipt}
     </div>)
 })
+
+const numberOfBookings = props.customer.bookings.length;
 return (
   <div>
+    <h5> Number Of Bookings {numberOfBookings} </h5>
   {bookings}
+  <CustomerBookings numberOfBookings = {props.customer.bookings}/>
   </div>
 )
 
