@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import {browserHistory} from 'react-router';
-
 import Request from "../helpers/requests.js";
 import "./css/RestaurantViewContainer.css";
-
 import BookingList from "../containers/BookingListContainer.js";
 import TableList from "../Components/TableListComponent.js";
+
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 class RestaurantViewContainer extends Component {
   constructor(props) {
@@ -14,14 +15,24 @@ class RestaurantViewContainer extends Component {
       tables: [],
       customers: this.props.customers,
       bookings: [],
-      date: null,
+      date: new Date(),
+      month: null,
       time: null
     }
 
+    this.handleChange = this.handleChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleTimeChange = this.handleTimeChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleNewBooking = this.handleNewBooking.bind(this);
+  }
+
+
+  handleChange(date) {
+    this.setState({
+      date: date,
+      month: date.getMonth() + 1
+    });
   }
 
   componentWillMount() {
@@ -91,7 +102,8 @@ class RestaurantViewContainer extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    const date = this.state.date;
+    const day = this.state.date.getDate()
+    const month = this.state.date.getMonth() + 1
     let time = event.target.time.value;
     if ((typeof(time) == "string") && (time != 0)) {
       this.setState({time: time})
@@ -101,11 +113,12 @@ class RestaurantViewContainer extends Component {
     }
 
     if (!time) {
-      console.log('by date', time)
-      this.props.getBookingsByDate(`bookings/date/${date}`)
+      console.log('by day_month', time)
+      console.log(day, month)
+      this.props.getBookingsByDate(`bookings/day/${day}/month/${month}`)
     } else {
       console.log('by hour', time)
-      this.props.getBookingsByHour(`bookings/date/${date}/time/${time}`)
+      this.props.getBookingsByHour(`bookings/day/${day}/month/${month}/time/${time}`)
     }
   }
 
@@ -113,13 +126,21 @@ class RestaurantViewContainer extends Component {
     const tableToBook = event.target.textContent;
     this.props.history.push(`/newbooking/${tableToBook}`)
   }
+  // Date <input type="text" onChange={this.handleDateChange} />
 
   render() {
+
+    const day = this.state.date.getDate()
+    const month = this.state.date.getMonth() + 1
+
     return(
       <React.Fragment>
           <div className="top-section">
             <form onSubmit={this.handleSubmit}>
-              Date <input type="text" onChange={this.handleDateChange} />
+                    <DatePicker
+              selected={this.state.date}
+              onChange={this.handleChange}
+            />
             <select name="time">
               <option value="0">Any Time</option>
               <option value="3">15:00</option>
@@ -135,7 +156,7 @@ class RestaurantViewContainer extends Component {
             </form>
           </div>
           <div className="grid">
-            <TableList tables={this.props.tables} time={this.state.time} date={this.state.date} handleNewBooking={this.handleNewBooking} editBooking={this.props.editBooking}/>
+            <TableList tables={this.props.tables} time={this.state.time} day={day} month={month} handleNewBooking={this.handleNewBooking} editBooking={this.props.editBooking}/>
             <BookingList bookings={this.props.bookings}/>
           </div>
       </React.Fragment>
