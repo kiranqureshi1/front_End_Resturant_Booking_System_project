@@ -8,16 +8,16 @@ const bookings = props.customer.bookings.map((booking, index) => {
     Customer: {booking.customer.name} <br />
     Table: {booking.restaurantTable.number} <br />
     Time: {booking.time} PM <br />
-    Receipt: {booking.receipt}
+    Receipt: {booking.receipt} <br/>
     </div>)
 })
 
 const numberOfBookings = props.customer.bookings.length;
 return (
   <div>
-    <h5> Number Of Bookings {numberOfBookings} </h5>
+    <h5> Number Of Bookings  <br/> {numberOfBookings} </h5>
+    <h4>Bookings</h4>
   {bookings}
-  <CustomerBookings numberOfBookings = {props.customer.bookings}/>
   </div>
 )
 
