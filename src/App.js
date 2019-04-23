@@ -6,6 +6,9 @@ import EditBookingComponent from "./Components/EditBookingComponent.js";
 import CustomerListContainer from "./containers/CustomerListContainer.js"
 import Request from "./helpers/requests.js";
 
+import CustomerBookings from "./Components/CustomerBookings"
+import CustomerTotalAmountSpent from "./Components/CustomerTotalAmountSpent"
+
 import './App.css';
 import NavBar from "./NavBar.js";
 
@@ -20,30 +23,37 @@ class App extends Component {
     }
     this.getBookingsByDate = this.getBookingsByDate.bind(this)
     this.getBookingsByHour = this.getBookingsByHour.bind(this)
+    this.getData = this.getData.bind(this)
   }
 
-  componentWillMount() {
+  getData(){
     const request = new Request();
     request.get('/customers')
       .then(res => {
         this.setState({customers: res._embedded.customers})
+        console.log(this.state.customers)
       })
 
     this.getTables()
     this.allBookings()
   }
 
+  componentWillMount() {
+    this.getData()
+  }
+
   allBookings(){
     const request = new Request();
-    request.get('bookings/')
+    request.get('/bookings/')
       .then(res => {
         this.setState({allBookings: res._embedded.bookings})
+        this.setState({bookings: []})
       })
   }
 
   getTables() {
     const request = new Request();
-    request.get('restaurantTables/')
+    request.get('/restaurantTables/')
       .then(res => {
         this.setState({tables: res._embedded.restaurantTables})
         const allTables = this.state.tables
@@ -51,13 +61,13 @@ class App extends Component {
           table.taken = false;
         }
         this.setState({tables: allTables})
-        console.log(this.state)
       })
   }
 
 
 
   getBookingsByDate(url) {
+    console.log('date')
     const request = new Request();
     request.get(url)
       .then(res => {
@@ -67,6 +77,7 @@ class App extends Component {
   }
 
   getBookingsByHour(url) {
+    console.log('hour')
     const request = new Request();
     request.get(url)
       .then(res => {
@@ -75,7 +86,16 @@ class App extends Component {
       })
   }
 
+  resetTables() {
+    const newTableState = this.state.tables;
+      for (const table of newTableState) {
+        table.taken = false;
+        }
+      }
+
+
   updateTakenTables() {
+    this.resetTables()
     const newTableState = this.state.tables;
     for (const booking of this.state.bookings) {
       for (const freeTable of newTableState) {
@@ -87,19 +107,18 @@ class App extends Component {
     this.setState({tables: newTableState})
   }
 
-  newBooking() {
+  editBooking({id, date, time, table, customer}) {
+    console.log('id', id,'date', date,'time', time,'table', table,'customer', customer)
     const request = new Request();
-    request.patch('/bookings/', {
-       "date": 10,
-       "time": 10,
-        "customer_id": 2,
-        "restaurant_table_id": 1
+    request.patch(`/bookings/${id}`, {
+       "date": date,
+       "time": time,
+        "customer": `http://localhost:8080/customers/${customer}`,
+        "restaurantTable": `http://localhost:8080/restaurantTables/${table}`
      })
-
   }
 
   componentDidMount() {
-    console.log(this.state)
   }
 
   render() {
@@ -123,20 +142,41 @@ class App extends Component {
                 const id = props.match.params.id;
                 const date = props.match.params.date;
                 const time = props.match.params.time;
-                return <NewBookingContainer id = {id} time= {time} date={date} customers = {this.state.customers}/>
+                return <NewBookingContainer id = {id} date = {date} time={time} customers = {this.state.customers}/>
                 }}
               />
 
             <Route exact path="/editbooking/:id" render = {(props) =>{
                 const id = props.match.params.id;
-                return <EditBookingComponent id = {id} allBookings={this.state.allBookings} newBooking={this.newBooking}/>
+                return <EditBookingComponent id = {id}
+                  allBookings={this.state.allBookings}
+                  editBooking={this.editBooking}
+                  tables={this.state.tables}
+                  customers={this.state.customers}
+                  updateData={this.getData}
+                  />
                 }}
               />
 
             <Route exact path = "/customers" render = {(props) => {
                 return <CustomerListContainer customers = {this.state.customers}/>
                 }} />
+                <Route exact path = "/customerbookings/:id" render = {(props) => {
+                      const id = props.match.params.id;
+                      let customerWithBookings;
+                      for (let customer of this.state.customers) {
+                        if (customer.id == id) {
+                          customerWithBookings = customer;
+                        }
+                      }
 
+                    return (
+                      <div>
+                      <CustomerBookings customer={customerWithBookings}/>
+                      <CustomerTotalAmountSpent customer={customerWithBookings}/>
+                      </div>
+                    )
+                    }} />
           </Switch>
         </React.Fragment>
     </Router>

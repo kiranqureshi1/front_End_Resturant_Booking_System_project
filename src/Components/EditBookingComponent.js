@@ -36,24 +36,27 @@ class EditBookingComponent extends Component {
 
   handleUpdate(event) {
     event.preventDefault()
+    const time = event.target.time.value;
     const table = event.target.table.value
-    if (!this.verifyDuplicate()) {
+    this.setState({table: table})
+    if (!this.verifyDuplicate(table)) {
       console.log('try again')
     } else {
       this.props.editBooking({
         id: this.state.id,
         date: this.state.date,
-        time: this.state.time,
+        time: time,
         table: table,
         customer: this.state.customer
       })
+      this.props.updateData()
     }
 }
-  verifyDuplicate() {
+  verifyDuplicate(table) {
     for (const existingBooking of this.props.allBookings) {
       if ((existingBooking.time == this.state.time) &&
         (existingBooking.date == this.state.date) &&
-        (existingBooking.restaurantTable.tableNumber == this.state.table)) {
+        (existingBooking.restaurantTable.tableNumber == table)) {
           return false
         }
     } return true
@@ -71,7 +74,16 @@ class EditBookingComponent extends Component {
         {tables}
       </select>
         New Date <input type="text" onChange={this.handleDateChange} />
-        New Time <input type="text" onChange={this.handleTimeChange} />
+      New Time <select name="time">
+          <option value="3">15:00</option>
+          <option value="4">16:00</option>
+          <option value="5">17:00</option>
+          <option value="6">18:00</option>
+          <option value="7">19:00</option>
+          <option value="8">20:00</option>
+          <option value="9">21:00</option>
+          <option value="10">22:00</option>
+        </select>
         Save <input type="submit" />
       </form>
     </div>)
