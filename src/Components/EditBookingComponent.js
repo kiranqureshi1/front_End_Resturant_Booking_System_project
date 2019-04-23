@@ -5,19 +5,25 @@ class EditBookingComponent extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentBooking: null,
       id: this.props.id,
       date: null,
-      time: null
+      time: null,
+      table: null,
+      customer: null
     }
     this.handleUpdate = this.handleUpdate.bind(this)
     this.handleDateChange = this.handleDateChange.bind(this)
     this.handleTimeChange = this.handleTimeChange.bind(this)
-
 }
 
   componentWillMount() {
-        console.log(this.props.allBookings)
+    for (const customer of this.props.customers) {
+      for (const booking of customer.bookings) {
+        if (booking.id == this.state.id) {
+          this.setState({ customer : customer.id })
+        }
+      }
+    }
   }
 
   handleDateChange(event) {
@@ -30,21 +36,40 @@ class EditBookingComponent extends Component {
 
   handleUpdate(event) {
     event.preventDefault()
-
-    this.props.newBooking()
-    request.patch('bookings/', {})
+    const table = event.target.table.value
+    if (!this.verifyDuplicate()) {
+      console.log('try again')
+    } else {
+      this.props.editBooking({
+        id: this.state.id,
+        date: this.state.date,
+        time: this.state.time,
+        table: table,
+        customer: this.state.customer
+      })
+    }
 }
-  // findCustomer(id) {
-  //   for (let booking of this.state.allBookings) {
-  //     if (booking.id == id) {
-  //       return booking
-  //     }
-  //   }
-  // }
+  verifyDuplicate() {
+    for (const existingBooking of this.props.allBookings) {
+      if ((existingBooking.time == this.state.time) &&
+        (existingBooking.date == this.state.date) &&
+        (existingBooking.restaurantTable.tableNumber == this.state.table)) {
+          return false
+        }
+    } return true
+  }
+
+
 
   render() {
+    const tables = this.props.tables.map((table, index) => {
+      return <option key={index} value={table.tableNumber}>{table.tableNumber}</option>
+    })
     return (<div>
       <form onSubmit={this.handleUpdate}>
+      Table number: <select name="table">
+        {tables}
+      </select>
         New Date <input type="text" onChange={this.handleDateChange} />
         New Time <input type="text" onChange={this.handleTimeChange} />
         Save <input type="submit" />

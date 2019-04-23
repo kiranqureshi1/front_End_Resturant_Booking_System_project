@@ -27,6 +27,7 @@ class App extends Component {
     request.get('/customers')
       .then(res => {
         this.setState({customers: res._embedded.customers})
+        console.log(this.state.customers)
       })
 
     this.getTables()
@@ -51,7 +52,6 @@ class App extends Component {
           table.taken = false;
         }
         this.setState({tables: allTables})
-        console.log(this.state)
       })
   }
 
@@ -87,19 +87,18 @@ class App extends Component {
     this.setState({tables: newTableState})
   }
 
-  newBooking() {
+  editBooking({id, date, time, table, customer}) {
+    console.log(id, date, time, table, customer)
     const request = new Request();
-    request.patch('/bookings/', {
-       "date": 10,
-       "time": 10,
-        "customer_id": 2,
-        "restaurant_table_id": 1
+    request.patch(`/bookings/${id}`, {
+       "date": date,
+       "time": time,
+        "customer_id": customer,
+        "restaurant_table_id": table
      })
-
   }
 
   componentDidMount() {
-    console.log(this.state)
   }
 
   render() {
@@ -119,16 +118,22 @@ class App extends Component {
               }}
 
               />
-            <Route exact path="/newbooking/:id/:date" render = {(props) =>{
+            <Route exact path="/newbooking/:id/:date/:time" render = {(props) =>{
                 const id = props.match.params.id;
-                const date = props.match.params.date
+                const date = props.match.params.date;
+                const time = props.match.params.time;
                 return <NewBookingContainer id = {id} customers = {this.state.customers}/>
                 }}
               />
 
             <Route exact path="/editbooking/:id" render = {(props) =>{
                 const id = props.match.params.id;
-                return <EditBookingComponent id = {id} allBookings={this.state.allBookings} newBooking={this.newBooking}/>
+                return <EditBookingComponent id = {id}
+                  allBookings={this.state.allBookings}
+                  editBooking={this.editBooking}
+                  tables={this.state.tables}
+                  customers={this.state.customers}
+                  />
                 }}
               />
 
