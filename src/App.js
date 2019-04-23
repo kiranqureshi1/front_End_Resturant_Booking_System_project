@@ -8,6 +8,7 @@ import Request from "./helpers/requests.js";
 
 import CustomerBookings from "./Components/CustomerBookings"
 import CustomerTotalAmountSpent from "./Components/CustomerTotalAmountSpent"
+import AddCustomersReceipt from "./Components/AddCustomersReceipt"
 
 import './App.css';
 import NavBar from "./NavBar.js";
@@ -170,6 +171,25 @@ class App extends Component {
                       </div>
                     )
                     }} />
+
+
+
+                    <Route exact path = "/customerReceipt/:id" render = {(props) => {
+                      const id = props.match.params.id;
+                       let customerReceipt;
+                       for(let booking of this.state.bookings){
+                         if (booking.id == id) {
+                           customerReceipt = booking;
+                         }
+                       }
+
+                       return (
+                         <div>
+                         <AddCustomersReceipt receipt={customerReceipt}/>
+                         </div>
+                       )
+                    }} />
+                    
           </Switch>
         </React.Fragment>
     </Router>
