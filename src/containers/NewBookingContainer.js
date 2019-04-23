@@ -10,6 +10,8 @@ const NewBookingContainer = (props) =>  {
     return <option key="index" value={customer.id}>{customer.name}</option>
   })
 
+  props.getAllCustomers()
+
     return (
       <div>
       <h4>New booking</h4>

@@ -58,6 +58,7 @@ class App extends Component {
 
 
   getBookingsByDate(url) {
+    console.log('date')
     const request = new Request();
     request.get(url)
       .then(res => {
@@ -67,6 +68,7 @@ class App extends Component {
   }
 
   getBookingsByHour(url) {
+    console.log('hour')
     const request = new Request();
     request.get(url)
       .then(res => {
@@ -75,7 +77,16 @@ class App extends Component {
       })
   }
 
+  resetTables() {
+    const newTableState = this.state.tables;
+      for (const table of newTableState) {
+        table.taken = false;
+        }
+      }
+
+
   updateTakenTables() {
+    this.resetTables()
     const newTableState = this.state.tables;
     for (const booking of this.state.bookings) {
       for (const freeTable of newTableState) {
@@ -122,7 +133,7 @@ class App extends Component {
                 const id = props.match.params.id;
                 const date = props.match.params.date;
                 const time = props.match.params.time;
-                return <NewBookingContainer id = {id} customers = {this.state.customers}/>
+                return <NewBookingContainer id = {id} date = {date} time={time} customers = {this.state.customers}/>
                 }}
               />
 

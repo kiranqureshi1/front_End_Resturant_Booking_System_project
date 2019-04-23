@@ -32,8 +32,14 @@ class RestaurantViewContainer extends Component {
   handleSubmit(event) {
     event.preventDefault()
     const date = this.state.date;
-    const time = this.state.time;
-    if (!time) {
+    const time = event.target.time.value;
+    if ((typeof(time) == "string") && (time !== 0)) {
+      this.setState({time: time})
+    } else {
+        this.setState({time: null})
+    }
+
+    if (!time || (time !== 0)) {
       this.props.getBookingsByDate(`bookings/date/${date}`)
     } else {
       this.props.getBookingsByHour(`bookings/date/${date}/time/${time}`)
@@ -51,7 +57,17 @@ class RestaurantViewContainer extends Component {
           <div className="top-section">
             <form onSubmit={this.handleSubmit}>
               Date <input type="text" onChange={this.handleDateChange} />
-              Time <input type="text" onChange={this.handleTimeChange} />
+            <select name="time">
+              <option value="0">Any Time</option>
+              <option value="3">15:00</option>
+              <option value="4">16:00</option>
+              <option value="5">17:00</option>
+              <option value="6">18:00</option>
+              <option value="7">19:00</option>
+              <option value="8">20:00</option>
+              <option value="9">21:00</option>
+              <option value="10">22:00</option>
+            </select>
               Search <input type="submit" />
             </form>
           </div>

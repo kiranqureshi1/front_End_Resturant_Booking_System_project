@@ -7,7 +7,7 @@ const Booking = (props) => {
           <Link to={`/editbooking/${props.booking.id}`}>
             <div>
               Customer: {props.booking.customer.name} <br />
-              Table: {props.booking.restaurantTable.number} <br />
+            Table: {props.booking.restaurantTable.tableNumber} <br />
               Time: {props.booking.time} PM
             </div>
           </Link>
