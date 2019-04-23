@@ -2,9 +2,15 @@ import React, { Component } from 'react';
 import RestaurantViewContainer from "./containers/RestaurantViewContainer";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import NewBookingContainer from "./containers/NewBookingContainer.js";
+<<<<<<< HEAD
 import EditBookingComponent from "./Components/EditBookingComponent.js";
 import CustomerListContainer from "./containers/CustomerListContainer.js"
 import Request from "./helpers/requests.js";
+=======
+import CustomerListContainer from "./containers/CustomerListContainer.js"
+import Request from "./helpers/requests.js";
+import CustomerBookings from "./Components/CustomerBookings"
+>>>>>>> cc617ebe62cd9f8ea880b2f6369d73685a96a4b5
 
 import './App.css';
 import NavBar from "./NavBar.js";
@@ -13,6 +19,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+<<<<<<< HEAD
       tables: [],
       customers: [],
       bookings: [],
@@ -20,6 +27,10 @@ class App extends Component {
     }
     this.getBookingsByDate = this.getBookingsByDate.bind(this)
     this.getBookingsByHour = this.getBookingsByHour.bind(this)
+=======
+      customers: []
+    }
+>>>>>>> cc617ebe62cd9f8ea880b2f6369d73685a96a4b5
   }
 
   componentWillMount() {
@@ -27,6 +38,7 @@ class App extends Component {
     request.get('/customers')
       .then(res => {
         this.setState({customers: res._embedded.customers})
+<<<<<<< HEAD
         console.log(this.state.customers)
       })
 
@@ -110,6 +122,9 @@ class App extends Component {
   }
 
   componentDidMount() {
+=======
+      })
+>>>>>>> cc617ebe62cd9f8ea880b2f6369d73685a96a4b5
   }
 
   render() {
@@ -118,6 +133,7 @@ class App extends Component {
         <React.Fragment>
           <NavBar />
           <Switch>
+<<<<<<< HEAD
             <Route exact path = "/" render = {(props) => {
               return <RestaurantViewContainer
               getAllCustomers={this.componentWillMount}
@@ -152,6 +168,29 @@ class App extends Component {
                 return <CustomerListContainer customers = {this.state.customers}/>
                 }} />
 
+=======
+            <Route exact path = "/" getAllCustomers={this.componentWillMount} component={RestaurantViewContainer} />
+              <Route exact path="/newbooking/:id" render = {(props) =>{
+                const id = props.match.params.id;
+                return <NewBookingContainer id = {id} customers = {this.state.customers}/>
+                }}
+              />
+            <Route exact path = "/customers" render = {(props) => {
+
+                return <CustomerListContainer customers = {this.state.customers}/>
+                }} />
+                <Route exact path = "/customerbookings/:id" render = {(props) => {
+                      const id = props.match.params.id;
+                      let customerWithBookings;
+                      for (let customer of this.state.customers) {
+                        if (customer.id == id) {
+                          customerWithBookings = customer;
+                        }
+                      }
+
+                    return <CustomerBookings customer={customerWithBookings}/>
+                    }} />
+>>>>>>> cc617ebe62cd9f8ea880b2f6369d73685a96a4b5
           </Switch>
         </React.Fragment>
     </Router>
