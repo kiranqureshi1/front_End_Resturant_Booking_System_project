@@ -1,56 +1,60 @@
-import React from 'react';
-import TableList from '../components/TableListComponent';
-import Customer from '../components/CustomerComponent';
-import NavBar from './NavBar';
+import React, {Component} from "react";
+import Request from "../helpers/requests.js";
+import NewCustomer from "../Components/NewCustomerComponent";
 
-class NewBookingContainer extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {                 // Not sure how date and time will factor into this,
-      customers: [],               // Will they be passed as props from restaurantContainer?
-      currentCustomer: null,
-      tables: [],
-      currentTable: null
-    };
-    this.handleCustomerSelected = this.handleCustomerSelected.bind(this);
-    this.handleTableSelected = this.handleTableSelected.bind(this);
-  }
-  // componentDidMount(){
-  //   const url = ''
-  //   const request = new XMLHttpRequest();      Not sure how this will work
-  //   request.open('GET',url);
-  //   request.addEventListener("load",()=>{
-  //     if (request.status !== 200) return;
-  //     const jsonString = request.responseText;
-  //     const data = JSON.parse(jsonString);
-  //     this.setState({countries:data});
-  //   });
-  //   request.send();
-  // }
+class NewBookingContainer extends Component {
+  constructor (props)  {
+    super(props)
 
-  handleCustomerSelected(index){
-    const selectedCustomer = this.state.customers[index];
-    this.setState({currentCustomer:selectedCustomer});
-  }
 
-  handleTableSelected(index){
-    const selectedTable = this.state.tables[index]; // This will also change if we
-    this.setState({currentTable:selectedTable});    // Can work out how to fill in the field based on
-                                                    // The table that was clicked
+
+  this.handleNewBookingSubmit = this.handleNewBookingSubmit.bind(this);
+  this.handleNewCustomer = this.handleNewCustomer.bind(this);
+}
+// const tableNum = this.props.id;
+// const date = this.props.date;
+// const time = this.props.time;
+// const customers = this.props.customers
+
+
+  handleNewBookingSubmit(event) {
+    event.preventDefault()
+    console.log(this.props.id, this.props.date, this.props.time)
+    // console.log(event.target.customers.value)
+    this.handleNewCustomer("joe")
   }
-  render(){
+  handleNewCustomer(newCustomer){
+    const request = new Request();
+    request.post('/customers', {"name" : newCustomer})
+  }
+  render() {
+
+    const customerOptions = this.props.customers.map((customer, index) => {
+      return <option key="index" value={customer.id}>{customer.name}</option>
+    })
+
     return (
       <div>
-      <NavBar/>
-      <h2>Create a New Booking</h2>
-      <Customer customers={this.state.customers}
-      currentCustomer={this.handleCustomerSelected}
-      customer={this.state.currentCustomer}/>
-      <TableList tables={this.state.tables}
-      currentTable={this.handleTableSelected}/>
+      <h4>New booking</h4>
+        <form onSubmit={this.handleNewBookingSubmit}>
+        Customers:
+          <select id="customers">
+            {customerOptions}
+          </select>
+          <p> Table: {this.props.id}</p>
+          <p> Date: {this.props.date} </p>
+          <p> Time: {this.props.time} </p>
+          <input type="submit" />
+
+
+          <NewCustomer handleNewCustomer={this.handleNewCustomer} />
+
+
+        </form>
       </div>
-    );
+    )
   }
 }
+
 
 export default NewBookingContainer;
