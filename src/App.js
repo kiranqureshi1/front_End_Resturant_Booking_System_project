@@ -27,7 +27,6 @@ class App extends Component {
   }
 
   getData(){
-    console.log('triggered')
     const request = new Request();
     request.get('/customers')
       .then(res => {
@@ -68,7 +67,6 @@ class App extends Component {
 
 
   getBookingsByDate(url) {
-    console.log('date')
     const request = new Request();
     request.get(url)
       .then(res => {
@@ -78,7 +76,6 @@ class App extends Component {
   }
 
   getBookingsByHour(url) {
-    console.log('hour')
     const request = new Request();
     request.get(url)
       .then(res => {

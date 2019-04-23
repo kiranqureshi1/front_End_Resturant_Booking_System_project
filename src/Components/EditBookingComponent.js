@@ -9,7 +9,8 @@ class EditBookingComponent extends Component {
       date: null,
       time: null,
       table: null,
-      customer: null
+      customer: null,
+      error: false
     }
     this.handleUpdate = this.handleUpdate.bind(this)
     this.handleDateChange = this.handleDateChange.bind(this)
@@ -39,8 +40,8 @@ class EditBookingComponent extends Component {
     const time = event.target.time.value;
     const table = event.target.table.value
     this.setState({table: table})
-    if (!this.verifyDuplicate(table)) {
-      console.log('try again')
+    if (!this.verifyDuplicate(time, table)) {
+      this.createError()
     } else {
       this.props.editBooking({
         id: this.state.id,
@@ -51,15 +52,27 @@ class EditBookingComponent extends Component {
       })
       this.props.updateData()
     }
-}
-  verifyDuplicate(table) {
+  }
+
+
+
+  verifyDuplicate(time, table) {
     for (const existingBooking of this.props.allBookings) {
-      if ((existingBooking.time == this.state.time) &&
+      if ((existingBooking.time == time) &&
         (existingBooking.date == this.state.date) &&
         (existingBooking.restaurantTable.tableNumber == table)) {
           return false
         }
-    } return true
+    }
+    return true
+  }
+
+  createError() {
+    this.setState({error: true})
+    console.log('error')
+    setTimeout(()=>{
+      this.setState({error:false})
+    }, 4000)
   }
 
 
@@ -68,7 +81,13 @@ class EditBookingComponent extends Component {
     const tables = this.props.tables.map((table, index) => {
       return <option key={index} value={table.tableNumber}>{table.tableNumber}</option>
     })
+
+    const error = (this.state.error) ? <p>Duplicate found, choose a different table/time</p>
+      : <p></p>
+
+
     return (<div>
+
       <form onSubmit={this.handleUpdate}>
       Table number: <select name="table">
         {tables}
@@ -86,6 +105,7 @@ class EditBookingComponent extends Component {
         </select>
         Save <input type="submit" />
       </form>
+      {error}
     </div>)
   }
 }
