@@ -1,3 +1,33 @@
+
+Restaurant Booking System:
+
+Steps to follow tp start a react project:
+1) npx create-react-app filename (command to make a react app)
+2)if react app already exists then npm install.
+3)npm install react-router-dom (to install react router)
+4)add a request file to add all routes.
+5)add a proxy path at the end of the package.json file to connect to the back end (  "proxy": "http://localhost:8080/").
+
+the app alows the user to book a table sorting by date and time for a customer and update while avoiding double bookings.It displays list of customers by frequency of visits, their number of bookings and the amount they spent.
+
+Suggested user: Restaurant manager
+
+You have been tasked to create a booking system for a brand new restaurant. The restaurant needs a way to book and arrange tables for customers who are booking over the phone. This system is for the staff to use.
+
+MVP:
+
+Your system must be able to:
+
+Allow the manager to book a table at the restaurant for a particular customer at a particular time and date Update a booking, for example if the customer wants to change a booking time Display a list of bookings for a given date Display a list of customers ordered by frequency of visits
+
+Project Extensions:
+
+Don't allow double bookings Add a customer's receipt to a booking so you can view their previous orders and how much they spent Calculate how much a customer has spent over a given period of time Give discounts to frequent customers Whatever features you think would be beneficial to a restaurant
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
