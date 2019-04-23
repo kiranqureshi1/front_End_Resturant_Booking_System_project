@@ -23,9 +23,10 @@ class App extends Component {
     }
     this.getBookingsByDate = this.getBookingsByDate.bind(this)
     this.getBookingsByHour = this.getBookingsByHour.bind(this)
+    this.getData = this.getData.bind(this)
   }
 
-  componentWillMount() {
+  getData(){
     const request = new Request();
     request.get('/customers')
       .then(res => {
@@ -37,17 +38,22 @@ class App extends Component {
     this.allBookings()
   }
 
+  componentWillMount() {
+    this.getData()
+  }
+
   allBookings(){
     const request = new Request();
-    request.get('bookings/')
+    request.get('/bookings/')
       .then(res => {
         this.setState({allBookings: res._embedded.bookings})
+        this.setState({bookings: []})
       })
   }
 
   getTables() {
     const request = new Request();
-    request.get('restaurantTables/')
+    request.get('/restaurantTables/')
       .then(res => {
         this.setState({tables: res._embedded.restaurantTables})
         const allTables = this.state.tables
@@ -147,6 +153,7 @@ class App extends Component {
                   editBooking={this.editBooking}
                   tables={this.state.tables}
                   customers={this.state.customers}
+                  updateData={this.getData}
                   />
                 }}
               />

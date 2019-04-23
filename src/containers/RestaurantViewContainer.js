@@ -92,14 +92,15 @@ class RestaurantViewContainer extends Component {
   handleSubmit(event) {
     event.preventDefault()
     const date = this.state.date;
-    const time = event.target.time.value;
-    if ((typeof(time) == "string") && (time !== 0)) {
+    let time = event.target.time.value;
+    if ((typeof(time) == "string") && (time != 0)) {
       this.setState({time: time})
     } else {
         this.setState({time: null})
+        time = null;
     }
 
-    if (!time && (time !== "0")) {
+    if (!time) {
       console.log('by date', time)
       this.props.getBookingsByDate(`bookings/date/${date}`)
     } else {
