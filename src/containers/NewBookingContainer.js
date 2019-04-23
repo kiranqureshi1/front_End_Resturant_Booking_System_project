@@ -8,24 +8,30 @@ class NewBookingContainer extends Component {
 
 
 
-  this.handleNewBookingSubmit = this.handleNewBookingSubmit.bind(this);
-  this.handleNewCustomer = this.handleNewCustomer.bind(this);
-}
-// const tableNum = this.props.id;
-// const date = this.props.date;
-// const time = this.props.time;
-// const customers = this.props.customers
+    this.handleNewBookingSubmit = this.handleNewBookingSubmit.bind(this);
+    this.handleNewCustomer = this.handleNewCustomer.bind(this);
+  }
+  // const tableNum = this.props.id;
+  // const date = this.props.date;
+  // const time = this.props.time;
+  // const customers = this.props.customers
 
 
   handleNewBookingSubmit(event) {
     event.preventDefault()
     console.log(this.props.id, this.props.date, this.props.time)
     // console.log(event.target.customers.value)
-    this.handleNewCustomer("joe")
+    const request = new Request();
+    request.post('/bookings', {
+      "customer": "http://localhost:8080/customers/" + event.target.customers.value,
+      "restaurantTable": "http://localhost:8080/restaurantTable/" + this.props.id,
+      "date": this.props.date,
+      "time": this.props.time
+    })
   }
   handleNewCustomer(newCustomer){
     const request = new Request();
-    request.post('/customers', {"name" : newCustomer})
+    request.post('/customers', {name: newCustomer})
   }
   render() {
 
@@ -36,21 +42,23 @@ class NewBookingContainer extends Component {
     return (
       <div>
       <h4>New booking</h4>
-        <form onSubmit={this.handleNewBookingSubmit}>
-        Customers:
-          <select id="customers">
-            {customerOptions}
-          </select>
-          <p> Table: {this.props.id}</p>
-          <p> Date: {this.props.date} </p>
-          <p> Time: {this.props.time} </p>
-          <input type="submit" />
+      <form onSubmit={this.handleNewBookingSubmit}>
+      Customers:
+      <select id="customers">
+      {customerOptions}
+      </select>
+      <p> Table: {this.props.id}</p>
+      <p> Date: {this.props.date} </p>
+      <p> Time: {this.props.time} </p>
+      <input type="submit" />
+
+      </form>
 
 
-          <NewCustomer handleNewCustomer={this.handleNewCustomer} />
+      <form>
 
-
-        </form>
+      <NewCustomer handleNewCustomer={this.handleNewCustomer} />
+      </form>
       </div>
     )
   }

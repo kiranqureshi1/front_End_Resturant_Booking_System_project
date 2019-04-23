@@ -4,9 +4,7 @@ const NewCustomer = (props) => {
 
   function handleSubmit(event){
     event.preventDefault();
-    const newCustomer = {
-      "name": event.target.name.value
-    }
+    const newCustomer = event.target.name.value;
     props.handleNewCustomer(newCustomer);
   }
   return (
