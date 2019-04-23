@@ -102,13 +102,13 @@ class App extends Component {
   }
 
   editBooking({id, date, time, table, customer}) {
-    console.log(id, date, time, table, customer)
+    console.log('id', id,'date', date,'time', time,'table', table,'customer', customer)
     const request = new Request();
     request.patch(`/bookings/${id}`, {
        "date": date,
        "time": time,
-        "customer_id": customer,
-        "restaurant_table_id": table
+        "customer": `http://localhost:8080/customers/${customer}`,
+        "restaurantTable": `http://localhost:8080/restaurantTables/${table}`
      })
   }
 

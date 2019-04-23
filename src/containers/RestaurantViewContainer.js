@@ -99,7 +99,7 @@ class RestaurantViewContainer extends Component {
         this.setState({time: null})
     }
 
-    if (!time && (time !== 0)) {
+    if (!time && (time !== "0")) {
       console.log('by date', time)
       this.props.getBookingsByDate(`bookings/date/${date}`)
     } else {
