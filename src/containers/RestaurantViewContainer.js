@@ -48,7 +48,6 @@ class RestaurantViewContainer extends Component {
         }
 
         this.setState({tables: allTables})
-
       })
   }
 
