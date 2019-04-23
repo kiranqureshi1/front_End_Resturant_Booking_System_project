@@ -27,11 +27,12 @@ class App extends Component {
   }
 
   getData(){
+    console.log('triggered')
     const request = new Request();
     request.get('/customers')
       .then(res => {
         this.setState({customers: res._embedded.customers})
-        console.log(this.state.customers)
+        // console.log(this.state.customers)
       })
 
     this.getTables()
