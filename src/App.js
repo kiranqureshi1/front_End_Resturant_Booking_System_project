@@ -5,6 +5,7 @@ import NewBookingContainer from "./containers/NewBookingContainer.js";
 import CustomerListContainer from "./containers/CustomerListContainer.js"
 import Request from "./helpers/requests.js";
 import CustomerBookings from "./Components/CustomerBookings"
+import CustomerTotalAmountSpent from "./Components/CustomerTotalAmountSpent"
 
 import './App.css';
 import NavBar from "./NavBar.js";
@@ -50,7 +51,12 @@ class App extends Component {
                         }
                       }
 
-                    return <CustomerBookings customer={customerWithBookings}/>
+                    return (
+                      <div>
+                      <CustomerBookings customer={customerWithBookings}/>
+                      <CustomerTotalAmountSpent customer={customerWithBookings}/>
+                      </div>
+                    )
                     }} />
           </Switch>
         </React.Fragment>

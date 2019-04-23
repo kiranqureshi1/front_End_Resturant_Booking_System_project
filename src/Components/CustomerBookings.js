@@ -12,12 +12,14 @@ const bookings = props.customer.bookings.map((booking, index) => {
     </div>)
 })
 
+
 const numberOfBookings = props.customer.bookings.length;
 return (
   <div>
     <h5> Number Of Bookings  <br/> {numberOfBookings} </h5>
     <h4>Bookings</h4>
-  {bookings}
+   {bookings}
+   <h4>Total Amount Spent</h4>
   </div>
 )
 
