@@ -23,13 +23,16 @@ return (
   <div>
     <h2 className="heading">Customer Booking Information</h2>
     <div className="booking-list">
-    <h5 className= "booking-num"> Number Of Bookings  <br/> {numberOfBookings} </h5>
+    <div className= "booking-num">
+    <h3> Number Of Bookings </h3>
+    {numberOfBookings}
+    </div>
     <div className="bookings">
-    <h4>Bookings</h4>
+    <h3>Bookings</h3>
    {bookings}
    </div>
    <div className="spent">
-   <h4 className="total-spent">Total Amount Spent</h4>
+   <h3 className="total-spent">Total Amount Spent</h3>
    {amountSpent}
    </div>
   </div>
