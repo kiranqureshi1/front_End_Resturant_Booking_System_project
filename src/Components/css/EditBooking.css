@@ -11,15 +11,16 @@
 
 .editbooking select {
   margin: 1em;
-  padding-left: 20px
-
+  padding-left: 20px;
 }
 
 .blue, .editbooking select{
+  margin-top: 1em;
   background-color: #93B7BE;
   border: 1px dotted #999;
   border-radius: 15px;
-  width: 80px;
+  width: 6.5em;
+  height: 2em;
   text-align: center;
   -webkit-appearance: none;
   color: #312F2F;
@@ -28,6 +29,12 @@
   font-family: 'Muli', sans-serif;
   transition-duration: 0.2s;
   cursor: pointer;
+  padding: 0em 1em;
+  margin-left: 2em;
+}
+
+.editbooking select:nth-of-type(1) {
+  width: 3em;
 }
 
 .blue {
@@ -58,7 +65,7 @@
   color: #F1FFFA;
 }
 
-.label {
+label {
   font-family: 'Muli', sans-serif;
   color: #312F2F;
   margin-left: 10px;
