@@ -1,4 +1,5 @@
 import React from "react";
+import "./css/CustomerBookings.css"
 
 const CustomerTotalAmountSpent = (props) => {
   if (!props.customer) return null;
@@ -8,7 +9,11 @@ const CustomerTotalAmountSpent = (props) => {
     total += booking.receipt;
   }
   console.log(total)
-  return total;
+  return (
+    <div className="total">
+    {total}
+    </div>
+  );
 
   return (
     <div>

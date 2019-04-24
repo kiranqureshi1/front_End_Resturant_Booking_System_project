@@ -1,4 +1,5 @@
 import React from "react";
+import "./css/CustomerBookings.css"
 
 const CustomerBookings = (props) => {
   if (!props.customer) return null;
@@ -15,7 +16,7 @@ const bookings = props.customer.bookings.map((booking, index) => {
 
 const numberOfBookings = props.customer.bookings.length;
 return (
-  <div>
+  <div className="booking-list">
     <h5> Number Of Bookings  <br/> {numberOfBookings} </h5>
     <h4>Bookings</h4>
    {bookings}
