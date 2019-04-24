@@ -1,9 +1,25 @@
 .table-list {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 40px
+ display: grid;
+ grid-template-columns: repeat(5, 1fr);
+ grid-gap: 40px
 }
 
 .taken {
-  background-color: red;
+ background-color: #7F2331;
+ padding: 50px;
+ margin: 20px;
+}
+
+.free {
+ background-color: #8FDC97;
+ padding: 50px;
+ margin: 20px;
+}
+
+.table-list a {
+   color: #312F2F;
+   font-weight: bold;
+   font-style: italic;
+   text-decoration: none;
+
 }
