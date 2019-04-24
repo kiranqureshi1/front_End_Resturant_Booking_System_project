@@ -5,13 +5,13 @@ import BookingListComponent from './BookingListComponent.js';
 
 const CustomerComponent= (props) => {
 
-  const numberOfBookings = props.customer.bookings.length;
+  const numberOfBookings = <span>{props.customer.bookings.length}</span>
+  const customerName = <span>{props.customer.name}</span>
 
   return (
     <React.Fragment>
        <Link to = {"/customerbookings/" + props.customer.id} className = "componentLink">
-         <span className="label"> Name: </span> {props.customer.name}
-         <span className="label">Bookings:</span> {numberOfBookings}
+        <span className="hoverWhite"><span>{customerName} with {numberOfBookings} bookings </span></span>
           </Link>
       </React.Fragment>
   )

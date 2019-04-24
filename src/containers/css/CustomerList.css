@@ -9,12 +9,14 @@
     padding: 1em 1em;
     border: 1px solid black;
   }
-  
+
 .component-item {
-  display: block;
-  width: 30%;
   margin: 0.5em auto;
   text-align: left;
+}
+
+.hoverWhite:hover {
+  color: #93B7BE;
 }
 
 .component {
