@@ -1,6 +1,8 @@
 import React from "react";
 import "./css/CustomerBookings.css"
 
+import CustomerTotalAmountSpent from '../Components/CustomerTotalAmountSpent';
+
 const CustomerBookings = (props) => {
   if (!props.customer) return null;
 console.log(props.customer)
@@ -24,7 +26,7 @@ return (
     <h4>Bookings</h4>
    {bookings}
    </div>
-   <h4 className="total-spent">Total Amount Spent</h4>
+   <h4 className="total-spent"><CustomerTotalAmountSpent/>Total Amount Spent</h4>
   </div>
   </div>
 )
