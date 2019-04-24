@@ -65,7 +65,7 @@
   margin: 0 auto;
 }
 
-.searchDiv h4 {
+.searchDiv h4, .editbooking h4 {
   text-align: center;
   margin-top: 1em;
   font-family: 'Muli', sans-serif;
