@@ -3,28 +3,35 @@ color: #7F2331;
 }
 
 .name{
-  color: #7F2331;
+  color: #312F2F;
 }
 
 .name:hover{
-  color: #7F2331;
+  color: #312F2F;
 }
 
-.table-number{
-  display: grid;
 
-}
+
 
 .component-list{
+  background-color: #F1FFFA;
+  border-style: solid;
+  border-width: 3px;
+  color: #312F2F;
   display: grid;
   grid-template-areas:
    'customer booking-number'
 }
 
 
-customer-container{
+.customer-container{
+  background-color: #F1FFFA;
+  border-style: solid;
+  border-width: 3px;
+  color: #312F2F;
   display: grid;
   grid-template-areas:
    'name table-number'
+
 
 }
