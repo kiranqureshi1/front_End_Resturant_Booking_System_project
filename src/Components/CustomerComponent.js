@@ -10,12 +10,10 @@ const CustomerComponent= (props) => {
 
   return (
     <React.Fragment>
-    <div className= "customer-container">
-       <Link to = {"/customerbookings/" + props.customer.id} className="name">
-       {props.customer.name} <br />
-       </Link>
-       <h3 className = "table-number"> {numberOfBookings}</h3>
-       </div>
+       <Link to = {"/customerbookings/" + props.customer.id} className = "componentLink">
+         <span className="label"> Name: </span> {props.customer.name}
+         <span className="label">Bookings:</span> {numberOfBookings}
+          </Link>
       </React.Fragment>
   )
 }

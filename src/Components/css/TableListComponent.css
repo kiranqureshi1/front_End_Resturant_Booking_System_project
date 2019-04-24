@@ -1,25 +1,62 @@
 .table-list {
- display: grid;
- grid-template-columns: repeat(5, 1fr);
- grid-gap: 40px
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 40px
 }
 
 .taken {
- background-color: #7F2331;
- padding: 50px;
- margin: 20px;
+  background-color: #7F2331;
+  padding: 50px;
+  margin: 20px;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: none;
+  font-family: 'Muli', sans-serif;
 }
 
 .free {
- background-color: #8FDC97;
- padding: 50px;
- margin: 20px;
+  background-color: #8FDC97;
+  padding: 50px;
+  margin: 20px;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: none;
+  font-family: 'Muli', sans-serif;
+  transition-duration: 0.7s;
 }
 
 .table-list a {
-   color: #312F2F;
-   font-weight: bold;
-   font-style: italic;
-   text-decoration: none;
+  color: #312F2F;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: none;
+  font-family: 'Muli', sans-serif;
+}
 
+@keyframes bounce {
+  0%, 20%, 60%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  40% {
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+
+  80% {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
+}
+
+.free:hover {
+  background-color: #F1FFFA;
+  animation: bounce 1s;
+}
+
+.heading {
+  grid-column: 1/6;
+  text-align: center;
+  font-family: 'Muli', sans-serif;
 }

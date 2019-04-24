@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Request from "../helpers/requests.js";
 import NewCustomer from "../Components/NewCustomerComponent";
+import "./css/NewBookingContainer.css";
 
 class NewBookingContainer extends Component {
   constructor (props)  {
@@ -37,8 +38,8 @@ class NewBookingContainer extends Component {
     })
 
     return (
-      <div>
-      <h4>New booking</h4>
+      <div className="editbooking">
+      <h4>New Booking</h4>
       <form onSubmit={this.handleNewBookingSubmit}>
       Customers:
       <select id="customers">
