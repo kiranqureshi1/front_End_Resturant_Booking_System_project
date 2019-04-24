@@ -5,7 +5,6 @@
   border-radius: 1em;
   padding: 3em 2em;
   border: 1px solid black;
-  grid-template-columns: 1fr 1fr;
 }
 
 
@@ -65,7 +64,7 @@
   color: #F1FFFA;
 }
 
-label {
+label, .label {
   font-family: 'Muli', sans-serif;
   color: #312F2F;
   margin-left: 10px;

@@ -1,19 +1,24 @@
 
-ul{
-  list-style-type: none;
-}
 
 .component-list {
     text-align: center;
-    border: 4px solid;
-    margin: 2em 5em 2em 5em;
+    margin: 1em auto;
+    background-color: #DCE8E4;
+    width: 40%;
+    border-radius: 1em;
+    padding: 1em 1em;
+    border: 1px solid black;
   }
+  
+.component-item {
+  display: block;
+  width: 30%;
+  margin: 0.5em auto;
+  text-align: left;
+}
 
 .component {
-  border: 2px solid;
-  margin: 1.5em 20em 1em 20em;
   border-radius: 1em;
-  padding: 0.5em 1em 0.5em 1em;
   font-family: 'Muli', sans-serif;
   font-weight: bold;
   transition-duration: 0.5s;
