@@ -19,7 +19,8 @@
   border-style: solid;
   border-width: 2px;
   border-top: none;
-  border-right: none
+  border-right: none;
+  background-color: #C3D7DB;
 }
 
 .book{
@@ -27,7 +28,8 @@
   border-style: solid;
   border-width: 2px;
   border-top: none;
-  border-right: none
+  border-right: none;
+  background-color: #C3D7DB;
 }
 
 .total-spent{
@@ -35,4 +37,5 @@
   border-style: solid;
   border-width: 2px;
   border-top: none;
+  background-color: #C3D7DB;
 }
