@@ -1,7 +1,14 @@
 .nav-bar {
   display: grid;
-  grid-template-columns: 1fr 1fr 5fr;
+  grid-template-columns: 1fr 1fr;
+	width: 100%;
+	float: left;
+	margin: 0 0 0 0;
+	padding: 0;
+	list-style: none;
+  background: #8FDC97;
 }
+
 
 .link {
   padding: 20px 20px 20px 20px;
@@ -13,5 +20,5 @@
 }
 
 .link:hover {
-  background-color: gray;
+  background-color: #93B7BE;
 }
