@@ -106,11 +106,12 @@ class App extends Component {
     this.setState({tables: newTableState})
   }
 
-  editBooking({id, date, time, table, customer}) {
-    console.log('id', id,'date', date,'time', time,'table', table,'customer', customer)
+  editBooking({id, day, month, time, table, customer}) {
+    console.log('id', id, 'day', day, 'month', month, 'time', time,'table', table,'customer', customer)
     const request = new Request();
     request.patch(`/bookings/${id}`, {
-       "date": date,
+       "day": day,
+       "month": month,
        "time": time,
         "customer": `http://localhost:8080/customers/${customer}`,
         "restaurantTable": `http://localhost:8080/restaurantTables/${table}`
@@ -137,12 +138,14 @@ class App extends Component {
               }}
 
               />
-            <Route exact path="/newbooking/:id/:date/:time" render = {(props) =>{
+            <Route exact path="/newbooking/:id/:day/:month/:time" render = {(props) =>{
                 const id = props.match.params.id;
-                const date = props.match.params.date;
+                const day = props.match.params.day;
+                const month = props.match.params.month;
                 const time = props.match.params.time;
                 return <NewBookingContainer id = {id}
-                  date = {date}
+                  day = {day}
+                  month = {month}
                   time={time}
                   getData={this.getData}
                   customers = {this.state.customers}/>

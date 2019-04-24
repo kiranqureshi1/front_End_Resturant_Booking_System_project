@@ -13,7 +13,7 @@ const TableList = (props) => {
       </div>
 
     } else {
-      return <Link to={`/newbooking/${table.tableNumber}/${props.date}/${props.time}`} key={index}><div className="table" key={index}>
+      return <Link to={`/newbooking/${table.tableNumber}/${props.day}/${props.month}/${props.time}`} key={index}><div className="table free" key={index}>
       {table.tableNumber}
     </div></Link>
     }

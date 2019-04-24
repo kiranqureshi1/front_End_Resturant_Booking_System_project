@@ -12,18 +12,19 @@ class NewBookingContainer extends Component {
 
   handleNewBookingSubmit(event) {
     event.preventDefault()
-    console.log(this.props.id, this.props.date, this.props.time)
+    console.log(this.props.id, this.props.day, this.props.month, this.props.time)
     // console.log(event.target.customers.value)
     const request = new Request();
     request.post('/bookings', {
       "customer": "http://localhost:8080/customers/" + event.target.customers.value,
       "restaurantTable": "http://localhost:8080/restaurantTable/" + this.props.id,
-      "date": this.props.date,
+      "day": this.props.day,
+      "month": this.props.month,
       "time": this.props.time
     })
     this.props.getData()
   }
-  
+
   handleNewCustomer(newCustomer){
     const request = new Request();
     request.post('/customers', {name: newCustomer})
@@ -44,7 +45,7 @@ class NewBookingContainer extends Component {
       {customerOptions}
       </select>
       <p> Table: {this.props.id}</p>
-      <p> Date: {this.props.date} </p>
+      <p> Date: {this.props.day}/{this.props.month} </p>
       <p> Time: {this.props.time} </p>
       <input type="submit" />
 

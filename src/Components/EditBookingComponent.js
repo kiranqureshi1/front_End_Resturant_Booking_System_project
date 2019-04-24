@@ -1,4 +1,9 @@
 import React, {Component } from "react";
+import "./css/EditBooking.css"
+
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 import Request from "../helpers/requests.js"
 
 class EditBookingComponent extends Component {
@@ -6,16 +11,23 @@ class EditBookingComponent extends Component {
     super(props)
     this.state = {
       id: this.props.id,
-      date: null,
+      date: new Date(),
       time: null,
       table: null,
       customer: null,
       error: false
     }
+    this.handleChange = this.handleChange.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this)
     this.handleDateChange = this.handleDateChange.bind(this)
     this.handleTimeChange = this.handleTimeChange.bind(this)
 }
+
+  handleChange(date) {
+    this.setState({
+      date: date
+    });
+  }
 
   componentWillMount() {
     for (const customer of this.props.customers) {
@@ -45,7 +57,8 @@ class EditBookingComponent extends Component {
     } else {
       this.props.editBooking({
         id: this.state.id,
-        date: this.state.date,
+        day: this.state.date.getDate(),
+        month: this.state.date.getMonth() + 1,
         time: time,
         table: table,
         customer: this.state.customer
@@ -86,14 +99,19 @@ class EditBookingComponent extends Component {
       : <p></p>
 
 
-    return (<div>
+    return (<div className="editbooking">
 
       <form onSubmit={this.handleUpdate}>
-      Table number: <select name="table">
+      <span className="label">Table number:</span>
+       <select name="table">
         {tables}
-      </select>
-        New Date <input type="text" onChange={this.handleDateChange} />
-      New Time <select name="time">
+      </select><br/>
+    <span className="label">New Date:</span> <DatePicker
+      selected={this.state.date}
+      onChange={this.handleChange}
+      className="blue"
+      /> <br />
+    <span className="label">New Time:</span> <select name="time">
           <option value="3">15:00</option>
           <option value="4">16:00</option>
           <option value="5">17:00</option>
@@ -102,8 +120,8 @@ class EditBookingComponent extends Component {
           <option value="8">20:00</option>
           <option value="9">21:00</option>
           <option value="10">22:00</option>
-        </select>
-        Save <input type="submit" />
+        </select> <br/>
+      <input type="submit" value="Save"/>
       </form>
       {error}
     </div>)
