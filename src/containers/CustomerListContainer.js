@@ -1,6 +1,7 @@
 import React from "react";
 
 import CustomerComponent from '../Components/CustomerComponent'
+import "./css/CustomerList.css";
 
 const CustomerList = (props) => {
   const sortedCustomers = props.customers.sort((a, b) => {
@@ -21,7 +22,7 @@ const CustomerList = (props) => {
 
   return (
 		<ul className="component-list">
-    <h3>Customers</h3>
+    <h3>Customers:</h3>
 	    {customers}
 	  </ul>
 
