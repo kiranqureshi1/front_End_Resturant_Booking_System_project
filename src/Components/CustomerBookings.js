@@ -17,10 +17,10 @@ const bookings = props.customer.bookings.map((booking, index) => {
 const numberOfBookings = props.customer.bookings.length;
 return (
   <div className="booking-list">
-    <h5> Number Of Bookings  <br/> {numberOfBookings} </h5>
-    <h4>Bookings</h4>
+    <h5 className= "booking-num"> Number Of Bookings  <br/> {numberOfBookings} </h5>
+    <h4 className="bookings">Bookings</h4>
    {bookings}
-   <h4>Total Amount Spent</h4>
+   <h4 className="total-spent">Total Amount Spent</h4>
   </div>
 )
 
