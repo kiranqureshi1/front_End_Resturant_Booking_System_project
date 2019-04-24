@@ -24,7 +24,7 @@ return (
     <h2 className="heading">Customer Booking Information</h2>
     <div className="booking-list">
     <div className= "booking-num">
-    <h3> Number Of Bookings </h3>
+    <h3 className="book-heading"> Number Of Bookings </h3>
     {numberOfBookings}
     </div>
     <div className="bookings">

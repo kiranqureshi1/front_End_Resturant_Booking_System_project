@@ -1,5 +1,6 @@
 .booking-list{
-  display: grid;border-style: solid;
+  display: grid;
+  border-style: solid;
   border-width: 3px;
   grid-template-areas:
   'bookings heading booking-number'
@@ -10,5 +11,10 @@
   border-width: 3px;
   text-align: center;
   background-color: #93B7BE;
+}
 
+.book-heading{
+  display: grid;
+  border-style: solid;
+  border-width: 3px;
 }
