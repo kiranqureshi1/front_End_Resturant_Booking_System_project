@@ -22,6 +22,7 @@ const TableList = (props) => {
 
   return(
     <div className="table-list">
+    <h2 className="table heading"> Tables </h2>
       {tables}
     </div>
   )
