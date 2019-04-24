@@ -1,7 +1,11 @@
 .booking-list{
-  color: #F1FFFA;
+  display: grid;
+  grid-template-areas:
+  'bookings booking-number'
 }
 
-.total{
-  color: #F1FFFA;
+.heading{
+  display: grid;
+  grid-template-areas:
+  'bookings heading'
 }
