@@ -92,16 +92,19 @@ class RestaurantViewContainer extends Component {
   handleSubmit(event) {
     event.preventDefault()
     const date = this.state.date;
-    const time = event.target.time.value;
-    if ((typeof(time) == "string") && (time !== 0)) {
+    let time = event.target.time.value;
+    if ((typeof(time) == "string") && (time != 0)) {
       this.setState({time: time})
     } else {
         this.setState({time: null})
+        time = null;
     }
 
-    if (!time || (time !== 0)) {
+    if (!time) {
+      console.log('by date', time)
       this.props.getBookingsByDate(`bookings/date/${date}`)
     } else {
+      console.log('by hour', time)
       this.props.getBookingsByHour(`bookings/date/${date}/time/${time}`)
     }
   }
@@ -132,7 +135,7 @@ class RestaurantViewContainer extends Component {
             </form>
           </div>
           <div className="grid">
-            <TableList tables={this.props.tables} date={this.state.date} handleNewBooking={this.handleNewBooking} editBooking={this.props.editBooking}/>
+            <TableList tables={this.props.tables} time={this.state.time} date={this.state.date} handleNewBooking={this.handleNewBooking} editBooking={this.props.editBooking}/>
             <BookingList bookings={this.props.bookings}/>
           </div>
       </React.Fragment>

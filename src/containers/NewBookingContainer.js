@@ -1,32 +1,64 @@
-import React from "react";
+import React, {Component} from "react";
+import Request from "../helpers/requests.js";
+import NewCustomer from "../Components/NewCustomerComponent";
 
-const NewBookingContainer = (props) =>  {
-  const tableNum = props.id;
-  // const date = props.date;
-  // const time = props.time;
-  const customers = props.customers
+class NewBookingContainer extends Component {
+  constructor (props)  {
+    super(props)
 
-  const customerOptions = customers.map((customer, index) => {
-    return <option key="index" value={customer.id}>{customer.name}</option>
-  })
+    this.handleNewBookingSubmit = this.handleNewBookingSubmit.bind(this);
+    this.handleNewCustomer = this.handleNewCustomer.bind(this);
+  }
 
-  props.getAllCustomers()
+  handleNewBookingSubmit(event) {
+    event.preventDefault()
+    console.log(this.props.id, this.props.date, this.props.time)
+    // console.log(event.target.customers.value)
+    const request = new Request();
+    request.post('/bookings', {
+      "customer": "http://localhost:8080/customers/" + event.target.customers.value,
+      "restaurantTable": "http://localhost:8080/restaurantTable/" + this.props.id,
+      "date": this.props.date,
+      "time": this.props.time
+    })
+    this.props.getData()
+  }
+  
+  handleNewCustomer(newCustomer){
+    const request = new Request();
+    request.post('/customers', {name: newCustomer})
+      .then(_ => this.props.getData())
+  }
+  render() {
+
+    const customerOptions = this.props.customers.map((customer, index) => {
+      return <option key={index} value={customer.id}>{customer.name}</option>
+    })
 
     return (
       <div>
       <h4>New booking</h4>
-        <form>
-        Customers:
-          <select id="customers">
-            {customerOptions}
-          </select>
-          <p> Table: {tableNum}</p>
-          <p> Time: </p>
-          <p> Date: </p>
+      <form onSubmit={this.handleNewBookingSubmit}>
+      Customers:
+      <select id="customers">
+      {customerOptions}
+      </select>
+      <p> Table: {this.props.id}</p>
+      <p> Date: {this.props.date} </p>
+      <p> Time: {this.props.time} </p>
+      <input type="submit" />
 
-        </form>
+      </form>
+
+
+      <form>
+
+      <NewCustomer handleNewCustomer={this.handleNewCustomer} />
+      </form>
       </div>
     )
   }
+}
+
 
 export default NewBookingContainer;

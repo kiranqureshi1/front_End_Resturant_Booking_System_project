@@ -24,31 +24,37 @@ class App extends Component {
     }
     this.getBookingsByDate = this.getBookingsByDate.bind(this)
     this.getBookingsByHour = this.getBookingsByHour.bind(this)
+    this.getData = this.getData.bind(this)
   }
 
-  componentWillMount() {
+  getData(){
     const request = new Request();
     request.get('/customers')
       .then(res => {
         this.setState({customers: res._embedded.customers})
-        console.log(this.state.customers)
+        // console.log(this.state.customers)
       })
 
     this.getTables()
     this.allBookings()
   }
 
+  componentWillMount() {
+    this.getData()
+  }
+
   allBookings(){
     const request = new Request();
-    request.get('bookings/')
+    request.get('/bookings/')
       .then(res => {
         this.setState({allBookings: res._embedded.bookings})
+        this.setState({bookings: []})
       })
   }
 
   getTables() {
     const request = new Request();
-    request.get('restaurantTables/')
+    request.get('/restaurantTables/')
       .then(res => {
         this.setState({tables: res._embedded.restaurantTables})
         const allTables = this.state.tables
@@ -62,7 +68,6 @@ class App extends Component {
 
 
   getBookingsByDate(url) {
-    console.log('date')
     const request = new Request();
     request.get(url)
       .then(res => {
@@ -72,7 +77,6 @@ class App extends Component {
   }
 
   getBookingsByHour(url) {
-    console.log('hour')
     const request = new Request();
     request.get(url)
       .then(res => {
@@ -103,13 +107,13 @@ class App extends Component {
   }
 
   editBooking({id, date, time, table, customer}) {
-    console.log(id, date, time, table, customer)
+    console.log('id', id,'date', date,'time', time,'table', table,'customer', customer)
     const request = new Request();
     request.patch(`/bookings/${id}`, {
        "date": date,
        "time": time,
-        "customer_id": customer,
-        "restaurant_table_id": table
+        "customer": `http://localhost:8080/customers/${customer}`,
+        "restaurantTable": `http://localhost:8080/restaurantTables/${table}`
      })
   }
 
@@ -137,7 +141,11 @@ class App extends Component {
                 const id = props.match.params.id;
                 const date = props.match.params.date;
                 const time = props.match.params.time;
-                return <NewBookingContainer id = {id} date = {date} time={time} customers = {this.state.customers}/>
+                return <NewBookingContainer id = {id}
+                  date = {date}
+                  time={time}
+                  getData={this.getData}
+                  customers = {this.state.customers}/>
                 }}
               />
 
@@ -148,6 +156,7 @@ class App extends Component {
                   editBooking={this.editBooking}
                   tables={this.state.tables}
                   customers={this.state.customers}
+                  updateData={this.getData}
                   />
                 }}
               />
