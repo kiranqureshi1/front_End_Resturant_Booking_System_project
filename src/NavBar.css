@@ -2,11 +2,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 	width: 100%;
-	float: left;
 	margin: 0 0 0 0;
 	padding: 0;
 	list-style: none;
-  background: #93B7BE;
+  background-color: #DCE8E4;
 }
 
 
@@ -18,11 +17,16 @@
   font-weight: bold;
   font-size: 20px;
   transition-duration: 0.2s;
-  border-right: solid 3px;
   font-family: 'Muli', sans-serif;
-    font-size: 30px;
+  font-size: 30px;
+  border-bottom: 1px solid black;
 }
 
+.link:nth-of-type(2) {
+  border-left: 1px solid black;
+}
+
+
 .link:hover {
-  background-color: #8FDC97;
+  background-color: #93B7BE;
 }
