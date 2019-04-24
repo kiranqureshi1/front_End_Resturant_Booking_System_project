@@ -1,13 +1,15 @@
 import React from 'react';
+import Request from "../helpers/requests.js";
 
-const AddCustomersReceipt = (props) => {
+const AddCustomerReceipt = (props) => {
+
 
    function handleSubmit(event){
        event.preventDefault();
        const receipt = {
            "receipt": event.target.receipt.value
          }
-       props.handleReceiptPost(receipt)
+       props.handleReceiptPost(receipt);
 
      }
    if (!props.receipt) return null;
@@ -20,4 +22,4 @@ const AddCustomersReceipt = (props) => {
 
 }
 
-export default AddCustomersReceipt;
+export default AddCustomerReceipt;

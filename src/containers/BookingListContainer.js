@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Link} from 'react-router-dom';
 import Booking from "../Components/Booking.js";
-import AddCustomersReceipt from "../Components/AddCustomersReceipt";
+import AddCustomerReceipt from "../Components/AddCustomerReceipt";
 
 class BookingList extends Component {
   constructor(props) {

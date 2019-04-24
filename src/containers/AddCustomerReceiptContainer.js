@@ -1,20 +1,19 @@
 import React from 'react';
-import Request from '../../helpers/request';
+import Request from "../helpers/requests.js";
 
-import AddCustomersReceiptContainer from '../Components/AddCustomersReceipt';
+import AddCustomerReceipt from '../Components/AddCustomerReceipt';
 
-const  AddCustomersReceiptContainer = (props) => {
+const  AddCustomerReceiptContainer = (props) => {
 
-  handleReceiptPost(receipt){
+  function handleReceiptPost(receipt){
   const request = new Request();
   request.post('/bookings', receipt).then(() => {
-    window.location = '/bookings
-    '
+    window.location = '/'
   })
 
   return (
-    <AddCustomersReceipt handleReceiptPost = {this.handleReceiptPost}/>
+    <AddCustomerReceipt handleReceiptPost = {handleReceiptPost}/>
   )
 
 }
-export default AddCustomersReceiptContainer;
+export default AddCustomerReceiptContainer;

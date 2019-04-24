@@ -8,7 +8,7 @@ import Request from "./helpers/requests.js";
 
 import CustomerBookings from "./Components/CustomerBookings"
 import CustomerTotalAmountSpent from "./Components/CustomerTotalAmountSpent"
-import AddCustomersReceipt from "./Components/AddCustomersReceipt"
+import AddCustomerReceipt from "./Components/AddCustomerReceipt"
 
 import './App.css';
 import NavBar from "./NavBar.js";
@@ -197,11 +197,11 @@ class App extends Component {
 
                        return (
                          <div>
-                         <AddCustomersReceipt receipt={customerReceipt}/>
+                         <AddCustomerReceipt receipt={customerReceipt}/>
                          </div>
                        )
                     }} />
-                    
+
           </Switch>
         </React.Fragment>
     </Router>
