@@ -100,7 +100,7 @@ class EditBookingComponent extends Component {
 
 
     return (<div className="editbooking">
-
+        <h4>Edit Booking</h4>
       <form onSubmit={this.handleUpdate}>
       <span className="label">Table number:</span>
        <select name="table">
