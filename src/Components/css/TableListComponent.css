@@ -18,6 +18,9 @@
   background-color: #8FDC97;
   padding: 50px;
   margin: 20px;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: none;
   font-family: 'Muli', sans-serif;
   transition-duration: 0.7s;
 }
