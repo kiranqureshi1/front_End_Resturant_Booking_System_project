@@ -16,18 +16,22 @@ const bookings = props.customer.bookings.map((booking, index) => {
     </div>)
 })
 
+const amountSpent =   <CustomerTotalAmountSpent customer={props.customer}/>
 
 const numberOfBookings = props.customer.bookings.length;
 return (
   <div>
-    <h3 className="heading">Customer Booking Information</h3>
+    <h2 className="heading">Customer Booking Information</h2>
     <div className="booking-list">
     <h5 className= "booking-num"> Number Of Bookings  <br/> {numberOfBookings} </h5>
     <div className="bookings">
     <h4>Bookings</h4>
    {bookings}
    </div>
-   <h4 className="total-spent"><CustomerTotalAmountSpent/>Total Amount Spent</h4>
+   <div className="spent">
+   <h4 className="total-spent">Total Amount Spent</h4>
+   {amountSpent}
+   </div>
   </div>
   </div>
 )

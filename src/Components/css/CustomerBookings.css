@@ -2,7 +2,7 @@
   display: grid;border-style: solid;
   border-width: 3px;
   grid-template-areas:
-  'bookings heading booking-number';
+  'bookings heading booking-number'
 }
 
 .heading{
@@ -11,9 +11,4 @@
   text-align: center;
   background-color: #93B7BE;
 
-}
-
-.total{
-  display: flex;
-  flex-direction: row-reverse;
 }
