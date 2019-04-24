@@ -100,18 +100,18 @@ class EditBookingComponent extends Component {
 
 
     return (<div className="editbooking">
-
+        <h4>Edit Booking</h4>
       <form onSubmit={this.handleUpdate}>
-      <span className="label">Table number:</span>
+      <label>Table number:</label>
        <select name="table">
         {tables}
       </select><br/>
-    <span className="label">New Date:</span> <DatePicker
+    <label>New Date:</label> <DatePicker
       selected={this.state.date}
       onChange={this.handleChange}
       className="blue"
       /> <br />
-    <span className="label">New Time:</span> <select name="time">
+    <label>New Time:</label> <select name="time">
           <option value="3">15:00</option>
           <option value="4">16:00</option>
           <option value="5">17:00</option>
