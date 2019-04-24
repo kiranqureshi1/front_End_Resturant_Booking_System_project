@@ -1,4 +1,5 @@
 import React from "react";
+import "../Components/css/CustomerComponent.css"
 
 import CustomerComponent from '../Components/CustomerComponent'
 
@@ -20,8 +21,10 @@ const CustomerList = (props) => {
   })
 
   return (
-		<ul className="component-list">
-    <h3>Customers</h3>
+		<ul >
+    <div className="component-list">
+    <h3 className="customers">Customers</h3> <h3 className="booking-number">Number Of Bookings </h3>
+    </div>
 	    {customers}
 	  </ul>
 

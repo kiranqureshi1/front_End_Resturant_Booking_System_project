@@ -1,0 +1,30 @@
+.component-list{
+color: #7F2331;
+}
+
+.name{
+  color: #7F2331;
+}
+
+.name:hover{
+  color: #7F2331;
+}
+
+.table-number{
+  display: grid;
+
+}
+
+.component-list{
+  display: grid;
+  grid-template-areas:
+   'customer booking-number'
+}
+
+
+customer-container{
+  display: grid;
+  grid-template-areas:
+   'name table-number'
+
+}

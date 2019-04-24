@@ -1,5 +1,6 @@
 import React  from 'react';
 import {Link} from 'react-router-dom';
+import "./css/CustomerComponent.css"
 import BookingListComponent from './BookingListComponent.js';
 
 
@@ -9,10 +10,12 @@ const CustomerComponent= (props) => {
 
   return (
     <React.Fragment>
+    <div className= "customer-container">
        <Link to = {"/customerbookings/" + props.customer.id} className="name">
        {props.customer.name} <br />
        </Link>
-       <h3> Number Of Bookings <br/> {numberOfBookings}</h3>
+       <h3 className = "table-number"> {numberOfBookings}</h3>
+       </div>
       </React.Fragment>
   )
 }
