@@ -178,6 +178,7 @@ class App extends Component {
                     return (
                       <div>
                       <CustomerBookings customer={customerWithBookings}/>
+                      <CustomerTotalAmountSpent customer={customerWithBookings}/>
                       </div>
                     )
                     }} />
