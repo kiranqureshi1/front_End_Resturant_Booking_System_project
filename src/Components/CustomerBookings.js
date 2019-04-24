@@ -28,7 +28,7 @@ return (
     {numberOfBookings}
     </div>
     <div className="bookings">
-    <h3>Bookings</h3>
+    <h3 className="book">Bookings</h3>
    {bookings}
    </div>
    <div className="spent">
