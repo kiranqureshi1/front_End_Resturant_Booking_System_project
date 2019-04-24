@@ -11,7 +11,8 @@ const bookings = props.customer.bookings.map((booking, index) => {
     Customer: {booking.customer.name} <br />
     Table: {booking.restaurantTable.number} <br />
     Time: {booking.time} PM <br />
-    Receipt: {booking.receipt} <br/>
+    Receipt: {booking.receipt}
+    <br/>
     </div>)
 })
 

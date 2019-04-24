@@ -6,8 +6,16 @@ color: #7F2331;
   color: #312F2F;
 }
 
-.name:hover{
+.customer-container:hover{
+ background-color: #93B7BE;
+}
 
+.name:link {
+  text-decoration: none;
+}
+
+.name:visited {
+  text-decoration: none;
 }
 
 .component-list{
@@ -15,6 +23,7 @@ color: #7F2331;
   border-style: solid;
   border-width: 3px;
   color: #312F2F;
+  background-color: #93B7BE;
   display: grid;
   grid-template-areas:
    'customer booking-number'
