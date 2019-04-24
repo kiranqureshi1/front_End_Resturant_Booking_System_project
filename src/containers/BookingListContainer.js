@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Booking from "../Components/Booking.js";
+import "./css/BookingListContainer.css";
 
 class BookingList extends Component {
   constructor(props) {
@@ -13,7 +14,8 @@ class BookingList extends Component {
     })
 
     return (
-      <div>
+      <div className="bookingsList">
+        <h4 className="bookingsHeading">Bookings</h4>
         {allBookings}
       </div>
     )
