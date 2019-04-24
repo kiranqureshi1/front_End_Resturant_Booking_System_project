@@ -8,3 +8,35 @@
   grid-template-columns: 5fr 1fr;
   border: 1px solid black;
 }
+
+.calendar, .top-section select{
+  background-color: #93B7BE;
+  border: 1px dotted #999;
+  border-radius: 15px;
+  width: 120px;
+  text-align: center;
+  -webkit-appearance: none;
+  color: #312F2F;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Muli', sans-serif;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+.calendar:hover, .top-section select:hover, .top-section input[type="submit"]:hover{
+  color: #F1FFFA;
+}
+
+.top-section input[type="submit"] {
+  background-color: #8FDC97;
+  color: #312F2F;
+  font-size: 20px;
+  border: 1px dotted #999;
+  border-radius: 1em;
+  font-weight: bold;
+  font-family: 'Muli', sans-serif;
+  transition-duration: 0.2s;
+  cursor: pointer;
+
+}

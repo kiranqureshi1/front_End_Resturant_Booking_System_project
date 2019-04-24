@@ -26,7 +26,6 @@
   font-family: 'Muli', sans-serif;
   transition-duration: 0.2s;
   cursor: pointer;
-
 }
 
 .blue {
@@ -55,7 +54,6 @@
 
 .editbooking input[type="submit"]:hover {
   color: #F1FFFA;
-
 }
 
 .label {

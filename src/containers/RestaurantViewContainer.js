@@ -140,6 +140,7 @@ class RestaurantViewContainer extends Component {
                     <DatePicker
               selected={this.state.date}
               onChange={this.handleChange}
+              className="calendar"
             />
             <select name="time">
               <option value="0">Any Time</option>
@@ -152,7 +153,7 @@ class RestaurantViewContainer extends Component {
               <option value="9">21:00</option>
               <option value="10">22:00</option>
             </select>
-              Search <input type="submit" />
+              <input type="submit" value="Search"/>
             </form>
           </div>
           <div className="grid">
