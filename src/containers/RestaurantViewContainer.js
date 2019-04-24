@@ -136,7 +136,9 @@ class RestaurantViewContainer extends Component {
     return(
       <React.Fragment>
           <div className="top-section">
-            <form onSubmit={this.handleSubmit}>
+            <div className="searchDiv">
+              <h4>Find a booking</h4>
+            <form onSubmit={this.handleSubmit} className="form">
                     <DatePicker
               selected={this.state.date}
               onChange={this.handleChange}
@@ -156,9 +158,13 @@ class RestaurantViewContainer extends Component {
               <input type="submit" value="Search"/>
             </form>
           </div>
+        </div>
           <div className="grid">
             <TableList tables={this.props.tables} time={this.state.time} day={day} month={month} handleNewBooking={this.handleNewBooking} editBooking={this.props.editBooking}/>
             <BookingList bookings={this.props.bookings}/>
+          </div>
+          <div className="newgrid">
+
           </div>
       </React.Fragment>
     )
