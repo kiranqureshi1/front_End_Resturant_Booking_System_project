@@ -38,18 +38,19 @@ class NewBookingContainer extends Component {
     })
 
     return (
-      <div className="editbooking">
-      <h4>New Booking</h4>
+      <div className="newbooking">
+      <h2>New Booking</h2>
       <form onSubmit={this.handleNewBookingSubmit}>
-      Customers:
+      <span className="customerSpan"> Customers:</span>
       <select id="customers">
       {customerOptions}
       </select>
       <p> Table: {this.props.id}</p>
       <p> Date: {this.props.day}/{this.props.month} </p>
       <p> Time: {this.props.time} </p>
+      <div className="submitbutton">
       <input type="submit" />
-
+      </div>
       </form>
 
 

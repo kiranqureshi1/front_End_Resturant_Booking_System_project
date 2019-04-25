@@ -8,13 +8,13 @@
   grid-template-columns: 1fr 1fr;
 }
 
-.newbooking p {
+.newbooking p, .customerSpan {
   font-weight: bold;
   font-size: 20px;
   font-family: 'Muli', sans-serif;
 }
 
-.newbooking h4 {
+.newbooking h2 {
   font-weight: bold;
   font-family: 'Muli', sans-serif;
 }
@@ -22,7 +22,25 @@
 .newbooking select {
   margin: 1em;
   padding-left: 20px;
-  width: 100px;
+}
+
+.blue, .newbooking select{
+  margin-top: 1em;
+  background-color: #93B7BE;
+  border: 1px dotted #999;
+  border-radius: 15px;
+  width: 6.5em;
+  height: 2em;
+  text-align: center;
+  -webkit-appearance: none;
+  color: #312F2F;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Muli', sans-serif;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  padding: 0em 1em;
+  margin-left: 2em;
 }
 
 .newbooking input[type="submit"] {
@@ -38,5 +56,12 @@
   font-family: 'Muli', sans-serif;
   transition-duration: 0.2s;
   cursor: pointer;
+}
 
+
+
+
+
+.newbooking input[type="submit"]:hover {
+  color: #F1FFFA;
 }

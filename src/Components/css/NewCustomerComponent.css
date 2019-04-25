@@ -1,8 +1,13 @@
 .newcustomer {
-  padding-left: 350px;
-  padding-bottom: 100px;
+padding-top: 40px;
+
 }
 
 .newcustomer h2 {
   font-family: 'Muli', sans-serif;
+}
+
+.submitbutton {
+padding-top: 10px;
+padding-right: 600px;
 }
