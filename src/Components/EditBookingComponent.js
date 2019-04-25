@@ -54,6 +54,7 @@ class EditBookingComponent extends Component {
     this.setState({table: table})
     if (!this.verifyDuplicate(time, table)) {
       this.createError()
+      console.log('error created')
     } else {
       this.props.editBooking({
         id: this.state.id,
@@ -71,9 +72,14 @@ class EditBookingComponent extends Component {
 
   verifyDuplicate(time, table) {
     for (const existingBooking of this.props.allBookings) {
+      console.log(existingBooking.month, existingBooking.day, this.state.date.getDate(), this.state.date.getMonth() + 1)
+      let day = this.state.date.getDate();
+      let month = this.state.date.getMonth() + 1
       if ((existingBooking.time == time) &&
-        (existingBooking.date == this.state.date) &&
+        (existingBooking.day == day) &&
+        (existingBooking.month == month) &&
         (existingBooking.restaurantTable.tableNumber == table)) {
+          console.log('match')
           return false
         }
     }
@@ -95,7 +101,7 @@ class EditBookingComponent extends Component {
       return <option key={index} value={table.tableNumber}>{table.tableNumber}</option>
     })
 
-    const error = (this.state.error) ? <p>Duplicate found, choose a different table/time</p>
+    const error = (this.state.error) ? <p className="errorMsg">Duplicate found, choose a different table/time</p>
       : <p></p>
 
 
