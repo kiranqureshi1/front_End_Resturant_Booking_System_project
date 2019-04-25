@@ -14,7 +14,7 @@
  font-family: 'Muli', sans-serif;
 }
 
-.newbooking h4 {
+.newbooking h4, .newbookingheader {
  font-weight: bold;
  font-family: 'Muli', sans-serif;
 }
@@ -64,4 +64,9 @@
  transition-duration: 0.2s;
  cursor: pointer;
 
+}
+
+.newbookingheader {
+  text-align: center;
+  font-size: 20px;
 }

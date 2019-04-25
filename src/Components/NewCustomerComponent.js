@@ -13,7 +13,9 @@ const NewCustomer = (props) => {
       <h2>Create New Customer</h2>
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder="Customer Name" name="name"/>
-        <input type="submit" value="Submit"/>
+        <div className="submitbutton">
+          <input type="submit" value="Submit"/>
+        </div>
       </form>
     </div>
   )

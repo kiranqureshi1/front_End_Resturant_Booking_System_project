@@ -61,7 +61,7 @@ class NewBookingContainer extends Component {
     return (
       <div className="newbooking">
         {this.renderRedirect()}
-      <h4>New booking</h4>
+      <h4 className="newbookingheader">New booking</h4>
       <form onSubmit={this.handleNewBookingSubmit}>
       <span className="customerSpan">Customers:</span>
       <select id="customers">
@@ -70,8 +70,9 @@ class NewBookingContainer extends Component {
       <p> Table: {this.props.id}</p>
       <p> Date: {this.props.day}/{this.props.month} </p>
       <p> Time: {this.props.time} </p>
-      <input type="submit" />
-
+      <div className="submitbutton">
+        <input type="submit" />
+      </div>
       </form>
 
 
