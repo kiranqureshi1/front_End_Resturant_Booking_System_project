@@ -21,12 +21,11 @@ class NewBookingContainer extends Component {
     this.setState({
       redirect: true
     })
-    console.log('updated state')
   }
 
   renderRedirect() {
     if (this.state.redirect) {
-      return <Redirect to='/target' />
+      return <Redirect to='/' />
     }
   }
 
@@ -42,7 +41,7 @@ class NewBookingContainer extends Component {
       "month": this.props.month,
       "time": this.props.time
     })
-    this.renderRedirect();
+    this.setRedirect();
 
     this.props.getData()
 
