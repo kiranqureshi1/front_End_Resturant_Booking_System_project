@@ -54,7 +54,6 @@ class EditBookingComponent extends Component {
     this.setState({table: table})
     if (!this.verifyDuplicate(time, table)) {
       this.createError()
-      console.log('error created')
     } else {
       this.props.editBooking({
         id: this.state.id,
