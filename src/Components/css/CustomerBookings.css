@@ -1,0 +1,17 @@
+.booking-list{
+  display: grid;
+  grid-template-areas:
+  'bookings heading booking-number'
+}
+
+.heading{
+  border-style: solid;
+  border-width: 3px;
+  text-align: center 
+
+}
+
+.total{
+  display: flex;
+  flex-direction: row-reverse;
+}

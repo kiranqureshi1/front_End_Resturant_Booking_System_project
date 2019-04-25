@@ -1,4 +1,5 @@
 import React from "react";
+import "../Components/css/CustomerComponent.css"
 
 import CustomerComponent from '../Components/CustomerComponent'
 import "./css/CustomerList.css";

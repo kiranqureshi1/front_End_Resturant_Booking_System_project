@@ -1,4 +1,7 @@
 import React from "react";
+import "./css/CustomerBookings.css"
+
+import CustomerTotalAmountSpent from '../Components/CustomerTotalAmountSpent';
 
 const CustomerBookings = (props) => {
   if (!props.customer) return null;
@@ -16,10 +19,15 @@ const bookings = props.customer.bookings.map((booking, index) => {
 const numberOfBookings = props.customer.bookings.length;
 return (
   <div>
-    <h5> Number Of Bookings  <br/> {numberOfBookings} </h5>
+    <h3 className="heading">Customer Booking Information</h3>
+    <div className="booking-list">
+    <h5 className= "booking-num"> Number Of Bookings  <br/> {numberOfBookings} </h5>
+    <div className="bookings">
     <h4>Bookings</h4>
    {bookings}
-   <h4>Total Amount Spent</h4>
+   </div>
+   <h4 className="total-spent"><CustomerTotalAmountSpent/>Total Amount Spent</h4>
+  </div>
   </div>
 )
 
