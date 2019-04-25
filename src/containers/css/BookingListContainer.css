@@ -1,0 +1,32 @@
+.booking {
+  border: 1px dotted;
+  margin: 1em 1em 1em 1em;
+  border-radius: 1em;
+  padding: 0.5em 1em 0.5em 1em;
+  font-family: 'Muli', sans-serif;
+  font-weight: bold;
+  transition-duration: 0.5s;
+  background-color: #F1FFFA;
+
+}
+
+.bookingLink {
+  text-decoration: none;
+  color: #312F2F
+}
+
+.booking:hover {
+  background-color: #93B7BE;
+  border: 1px solid;
+}
+
+.bookingsHeading {
+  text-align: center;
+  font-family: 'Muli', sans-serif;
+  font-size: 20px;
+
+}
+
+.bookingsList {
+  border-left: 1px solid black;
+}
