@@ -1,4 +1,5 @@
 import React from 'react';
+import "./css/NewCustomerComponent.css"
 
 const NewCustomer = (props) => {
 
@@ -8,12 +9,12 @@ const NewCustomer = (props) => {
     props.handleNewCustomer(newCustomer);
   }
   return (
-    <div>
-    <h2>Create New Customer</h2>
-    <form onSubmit={handleSubmit}>
-    <input type="text" placeholder="Customer Name" name="name"/>
-    <input type="submit" value="Submit"/>
-    </form>
+    <div className="newcustomer">
+      <h2>Create New Customer</h2>
+      <form onSubmit={handleSubmit}>
+        <input type="text" placeholder="Customer Name" name="name"/>
+        <input type="submit" value="Submit"/>
+      </form>
     </div>
   )
 }

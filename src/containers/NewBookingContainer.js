@@ -1,13 +1,31 @@
 import React, {Component} from "react";
+import { Redirect } from 'react-router-dom';
 import Request from "../helpers/requests.js";
 import NewCustomer from "../Components/NewCustomerComponent";
+
+import "./css/NewBookingContainer.css";
 
 class NewBookingContainer extends Component {
   constructor (props)  {
     super(props)
+    this.state = {
+      redirect: false
+    }
 
     this.handleNewBookingSubmit = this.handleNewBookingSubmit.bind(this);
     this.handleNewCustomer = this.handleNewCustomer.bind(this);
+  }
+
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    })
+  }
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/target' />
+    }
   }
 
   handleNewBookingSubmit(event) {
@@ -22,7 +40,10 @@ class NewBookingContainer extends Component {
       "month": this.props.month,
       "time": this.props.time
     })
+    this.renderRedirect();
+
     this.props.getData()
+
   }
 
   handleNewCustomer(newCustomer){
@@ -37,10 +58,11 @@ class NewBookingContainer extends Component {
     })
 
     return (
-      <div>
+      <div className="newbooking">
+        {this.renderRedirect()}
       <h4>New booking</h4>
       <form onSubmit={this.handleNewBookingSubmit}>
-      Customers:
+      <span className="customerSpan">Customers:</span>
       <select id="customers">
       {customerOptions}
       </select>
