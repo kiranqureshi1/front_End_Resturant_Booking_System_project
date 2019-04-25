@@ -1,5 +1,7 @@
 import React, {Component } from "react";
 import "./css/EditBooking.css"
+import { Redirect } from 'react-router-dom';
+
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -15,12 +17,27 @@ class EditBookingComponent extends Component {
       time: null,
       table: null,
       customer: null,
-      error: false
+      error: false,
+      redirect: false
     }
+    this.renderRedirect = this.renderRedirect.bind(this)
+
     this.handleChange = this.handleChange.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this)
     this.handleDateChange = this.handleDateChange.bind(this)
     this.handleTimeChange = this.handleTimeChange.bind(this)
+}
+
+setRedirect(){
+  this.setState({
+    redirect: true
+  })
+}
+
+renderRedirect() {
+  if (this.state.redirect) {
+    return <Redirect to='/' />
+  }
 }
 
   handleChange(date) {
@@ -54,7 +71,6 @@ class EditBookingComponent extends Component {
     this.setState({table: table})
     if (!this.verifyDuplicate(time, table)) {
       this.createError()
-      console.log('error created')
     } else {
       this.props.editBooking({
         id: this.state.id,
@@ -64,6 +80,7 @@ class EditBookingComponent extends Component {
         table: table,
         customer: this.state.customer
       })
+      this.setRedirect()
       this.props.updateData()
     }
   }
@@ -106,6 +123,8 @@ class EditBookingComponent extends Component {
 
 
     return (<div className="editbooking">
+    {this.renderRedirect()}
+
         <h4>Edit Booking</h4>
       <form onSubmit={this.handleUpdate}>
       <label>Table number:</label>

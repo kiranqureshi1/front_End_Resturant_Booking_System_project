@@ -1,5 +1,5 @@
 import React from 'react';
-import "./css/NewCustomerComponent.css";
+import "./css/NewCustomerComponent.css"
 
 const NewCustomer = (props) => {
 
@@ -10,11 +10,11 @@ const NewCustomer = (props) => {
   }
   return (
     <div className="newcustomer">
-    <h2>Create New Customer</h2>
-    <form onSubmit={handleSubmit}>
-    <input type="text" placeholder="Customer Name" name="name"/>
-    <input type="submit" value="Submit"/>
-    </form>
+      <h2>Create New Customer</h2>
+      <form onSubmit={handleSubmit}>
+        <input type="text" placeholder="Customer Name" name="name"/>
+        <input type="submit" value="Submit"/>
+      </form>
     </div>
   )
 }
