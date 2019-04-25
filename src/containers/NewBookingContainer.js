@@ -12,17 +12,19 @@ class NewBookingContainer extends Component {
       redirect: false
     }
 
+    this.renderRedirect = this.renderRedirect.bind(this)
     this.handleNewBookingSubmit = this.handleNewBookingSubmit.bind(this);
     this.handleNewCustomer = this.handleNewCustomer.bind(this);
   }
 
-  setRedirect = () => {
+  setRedirect(){
     this.setState({
       redirect: true
     })
+    console.log('updated state')
   }
 
-  renderRedirect = () => {
+  renderRedirect() {
     if (this.state.redirect) {
       return <Redirect to='/target' />
     }
