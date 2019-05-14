@@ -8,6 +8,7 @@ Steps to follow tp start a react project:
 4)add a request file to add all routes.
 5)add a proxy path at the end of the package.json file to connect to the back end (  "proxy": "http://localhost:8080/").
 6)import DatePicker from 'react-date-picker'; (import this to get access to date) >> https://www.npmjs.com/package/react-date-picker >>> in terminal to install package >> (npm install react-datepicker --save)
+7) npm start to run and open in browser
 
 the app alows the user to book a table sorting by date and time for a customer and update while avoiding double bookings.It displays list of customers by frequency of visits, their number of bookings and the amount they spent.
 
